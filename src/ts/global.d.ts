@@ -1,4 +1,35 @@
-interface IWalletInfo {}
+interface INodeInformation {
+  // The height of the chain of header of the internal full node
+  headers: number;
+  // The height of the latest validated block of the internal full node
+  blocks: number;
+  // The current synchronization progress
+  verificationProgress: number;
+}
+
+interface ISyncStatus {
+  // The CryptoCode of the crypto currency (default. BTC)
+  cryptoCode: string;
+  // Detailed sync status of the internal full node
+  nodeInformation: INodeInformation;
+  // The height of the chain of header of the internal indexer
+  chainHeight: number;
+  // The height of the latest indexed block of the internal indexer
+  syncHeight: number;
+}
+
+interface IWalletInfo {
+  // BTCPay Server version
+  version: string;
+  // The Tor hostname
+  onion: string;
+  // The payment methods this wallet supports
+  supportedPaymentMethods: Array<string>;
+  // True if the wallet is fully synchronized, according to NBXplorer
+  fullySynched: boolean;
+  // Application Server Info Sync StatusData
+  syncStatus: Array<ISyncStatus>;
+}
 
 interface IUser {
   token: string;
@@ -49,5 +80,5 @@ interface IBTCPayServer {
   makeInvoice(): Promise<IPaymentRequestDetails>;
   sendPayment(): Promise<boolean>;
   getBalance(): Promise<string>;
-  getInvoices(): Promise<Array<IPaymentRequestDetails>>
+  getInvoices(): Promise<Array<IPaymentRequestDetails>>;
 }
