@@ -1,10 +1,14 @@
 import React from 'react';
-import QueryProvider from './providers/QueryProvider';
+import {NavigationContainer} from '@react-navigation/native';
+import AppNavigator from '@app/navigation/AppNavigator';
+import QueryProvider from '@app/providers/QueryProvider';
 
 function App() {
   return (
     <QueryProvider>
-      <div>This is a POC</div>
+      <NavigationContainer>
+        <AppNavigator />
+      </NavigationContainer>
     </QueryProvider>
   );
 }

@@ -1,5 +1,5 @@
 // TODO: use env vars
-const BASE_URL = 'https://btc-pay.peakshift.com/api/v1';
+const BASE_URL = 'https://btc-pay.peakshift.com';
 
 const config = {
   baseURL: BASE_URL,
