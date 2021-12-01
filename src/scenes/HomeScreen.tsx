@@ -1,13 +1,32 @@
 import React from 'react';
-import {Text, SafeAreaView} from 'react-native';
-import QRCode from 'react-native-qrcode-svg';
-import config from '@app/config';
+import {Button, Text, SafeAreaView} from 'react-native';
+import {useNavigation} from '@react-navigation/core';
+import {AppNavigatorParams} from '@app/navigation/AppNavigator';
+import {StackNavigationProp} from '@react-navigation/stack';
+
+type HomeScreenNavigationProp = StackNavigationProp<
+  AppNavigatorParams,
+  'HomeScreen'
+>;
 
 function HomeScreen() {
+  const navigation = useNavigation<HomeScreenNavigationProp>();
+
   return (
     <SafeAreaView>
-      <Text>This is a POC</Text>
-      <QRCode value={config.baseURL} />
+      <Text>BTC Payer</Text>
+      <Button
+        onPress={() => {
+          navigation.push('ReceivePaymentScreen');
+        }}
+        title="Receive Payment"
+      />
+      <Button
+        onPress={() => {
+          navigation.push('SendPaymentScreen');
+        }}
+        title="Send Payment"
+      />
     </SafeAreaView>
   );
 }
