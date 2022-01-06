@@ -4,7 +4,7 @@
  */
 
 export interface paths {
-  "/api/v1/api-keys/{apikey}": {
+  '/api/v1/api-keys/{apikey}': {
     /** Revoke the current API key so that it cannot be used anymore */
     delete: {
       parameters: {
@@ -21,14 +21,14 @@ export interface paths {
       };
     };
   };
-  "/api/v1/api-keys/current": {
+  '/api/v1/api-keys/current': {
     /** View information about the current API key */
     get: {
       responses: {
         /** Information about the current api key */
         200: {
           content: {
-            "application/json": components["schemas"]["ApiKeyData"];
+            'application/json': components['schemas']['ApiKeyData'];
           };
         };
       };
@@ -39,26 +39,26 @@ export interface paths {
         /** The key was revoked and is no longer usable */
         200: {
           content: {
-            "application/json": components["schemas"]["ApiKeyData"];
+            'application/json': components['schemas']['ApiKeyData'];
           };
         };
       };
     };
   };
-  "/api/v1/api-keys": {
+  '/api/v1/api-keys': {
     /** Create a new API Key */
     post: {
       responses: {
         /** Information about the new api key */
         200: {
           content: {
-            "application/json": components["schemas"]["ApiKeyData"];
+            'application/json': components['schemas']['ApiKeyData'];
           };
         };
       };
       requestBody: {
         content: {
-          "application/json": {
+          'application/json': {
             /** The label of the new API Key */
             label?: string | null;
             /** The permissions granted to this API Key (See API Key Authentication) */
@@ -68,7 +68,7 @@ export interface paths {
       };
     };
   };
-  "/api-keys/authorize": {
+  '/api-keys/authorize': {
     /** Redirect the browser to this endpoint to request the user to generate an api-key with specific permissions */
     get: {
       parameters: {
@@ -91,7 +91,7 @@ export interface paths {
         /** A HTML form that a user can use to confirm permissions to grant */
         200: {
           content: {
-            "text/html": unknown;
+            'text/html': unknown;
           };
         };
         /** Makes browser do an HTTP POST request to the specified url in `redirect` with a JSON body consisting of `apiKey` (the api key created or matched), `permissions` (the permissions the user consented to), and `userId` (the id of the user that consented) upon consent */
@@ -99,111 +99,111 @@ export interface paths {
       };
     };
   };
-  "/api/v1/health": {
+  '/api/v1/health': {
     /** Check the instance health status */
-    get: operations["Health_GetHealth"];
+    get: operations['Health_GetHealth'];
   };
-  "/api/v1/stores/{storeId}/invoices": {
+  '/api/v1/stores/{storeId}/invoices': {
     /** View information about the existing invoices */
-    get: operations["Invoices_GetInvoices"];
+    get: operations['Invoices_GetInvoices'];
     /** Create a new invoice */
-    post: operations["Invoices_CreateInvoice"];
+    post: operations['Invoices_CreateInvoice'];
   };
-  "/api/v1/stores/{storeId}/invoices/{invoiceId}": {
+  '/api/v1/stores/{storeId}/invoices/{invoiceId}': {
     /** View information about the specified invoice */
-    get: operations["Invoices_GetInvoice"];
+    get: operations['Invoices_GetInvoice'];
     /** Updates the specified invoice. */
-    put: operations["Invoices_UpdateInvoice"];
+    put: operations['Invoices_UpdateInvoice'];
     /** Archives the specified invoice. */
-    delete: operations["Invoices_ArchiveInvoice"];
+    delete: operations['Invoices_ArchiveInvoice'];
   };
-  "/api/v1/stores/{storeId}/invoices/{invoiceId}/payment-methods": {
+  '/api/v1/stores/{storeId}/invoices/{invoiceId}/payment-methods': {
     /** View information about the specified invoice's payment methods */
-    get: operations["Invoices_GetInvoicePaymentMethods"];
+    get: operations['Invoices_GetInvoicePaymentMethods'];
     /** Archives the specified invoice. */
-    delete: operations["Invoices_ArchiveInvoice"];
+    delete: operations['Invoices_ArchiveInvoice'];
   };
-  "/api/v1/stores/{storeId}/invoices/{invoiceId}/status": {
+  '/api/v1/stores/{storeId}/invoices/{invoiceId}/status': {
     /** Mark an invoice as invalid or settled. */
-    post: operations["Invoices_MarkInvoiceStatus"];
+    post: operations['Invoices_MarkInvoiceStatus'];
   };
-  "/api/v1/stores/{storeId}/invoices/{invoiceId}/unarchive": {
+  '/api/v1/stores/{storeId}/invoices/{invoiceId}/unarchive': {
     /** Unarchive an invoice */
-    post: operations["Invoices_UnarchiveInvoice"];
+    post: operations['Invoices_UnarchiveInvoice'];
   };
-  "/api/v1/stores/{storeId}/invoices/{invoiceId}/payment-methods/{paymentMethod}/activate": {
+  '/api/v1/stores/{storeId}/invoices/{invoiceId}/payment-methods/{paymentMethod}/activate': {
     /** Activate an invoice payment method (if lazy payments mode is enabled) */
-    post: operations["Invoices_ActivatePaymentMethod"];
+    post: operations['Invoices_ActivatePaymentMethod'];
   };
-  "/api/v1/server/lightning/{cryptoCode}/info": {
+  '/api/v1/server/lightning/{cryptoCode}/info': {
     /** View information about the lightning node */
-    get: operations["InternalLightningNodeApi_GetInfo"];
+    get: operations['InternalLightningNodeApi_GetInfo'];
   };
-  "/api/v1/server/lightning/{cryptoCode}/connect": {
+  '/api/v1/server/lightning/{cryptoCode}/connect': {
     /** Connect to another lightning node. */
-    post: operations["InternalLightningNodeApi_ConnectToNode"];
+    post: operations['InternalLightningNodeApi_ConnectToNode'];
   };
-  "/api/v1/server/lightning/{cryptoCode}/channels": {
+  '/api/v1/server/lightning/{cryptoCode}/channels': {
     /** View information about the current channels of the lightning node */
-    get: operations["InternalLightningNodeApi_GetChannels"];
+    get: operations['InternalLightningNodeApi_GetChannels'];
     /** Open a channel with another lightning node. You should connect to that node first. */
-    post: operations["InternalLightningNodeApi_OpenChannel"];
+    post: operations['InternalLightningNodeApi_OpenChannel'];
   };
-  "/api/v1/server/lightning/{cryptoCode}/address": {
+  '/api/v1/server/lightning/{cryptoCode}/address': {
     /** Get an on-chain deposit address for the lightning node */
-    post: operations["InternalLightningNodeApi_GetDepositAddress"];
+    post: operations['InternalLightningNodeApi_GetDepositAddress'];
   };
-  "/api/v1/server/lightning/{cryptoCode}/invoices/{id}": {
+  '/api/v1/server/lightning/{cryptoCode}/invoices/{id}': {
     /** View information about the requested lightning invoice */
-    get: operations["InternalLightningNodeApi_GetInvoice"];
+    get: operations['InternalLightningNodeApi_GetInvoice'];
   };
-  "/api/v1/server/lightning/{cryptoCode}/invoices/pay": {
+  '/api/v1/server/lightning/{cryptoCode}/invoices/pay': {
     /** Pay a lightning invoice. */
-    post: operations["InternalLightningNodeApi_PayInvoice"];
+    post: operations['InternalLightningNodeApi_PayInvoice'];
   };
-  "/api/v1/server/lightning/{cryptoCode}/invoices": {
+  '/api/v1/server/lightning/{cryptoCode}/invoices': {
     /** Create a lightning invoice. */
-    post: operations["InternalLightningNodeApi_CreateInvoice"];
+    post: operations['InternalLightningNodeApi_CreateInvoice'];
   };
-  "/api/v1/stores/{storeId}/lightning/{cryptoCode}/info": {
+  '/api/v1/stores/{storeId}/lightning/{cryptoCode}/info': {
     /** View information about the lightning node */
-    get: operations["StoreLightningNodeApi_GetInfo"];
+    get: operations['StoreLightningNodeApi_GetInfo'];
   };
-  "/api/v1/stores/{storeId}/lightning/{cryptoCode}/connect": {
+  '/api/v1/stores/{storeId}/lightning/{cryptoCode}/connect': {
     /** Connect to another lightning node. */
-    post: operations["StoreLightningNodeApi_ConnectToNode"];
+    post: operations['StoreLightningNodeApi_ConnectToNode'];
   };
-  "/api/v1/stores/{storeId}/lightning/{cryptoCode}/channels": {
+  '/api/v1/stores/{storeId}/lightning/{cryptoCode}/channels': {
     /** View information about the current channels of the lightning node */
-    get: operations["StoreLightningNodeApi_GetChannels"];
+    get: operations['StoreLightningNodeApi_GetChannels'];
     /** Open a channel with another lightning node. You should connect to that node first. */
-    post: operations["StoreLightningNodeApi_OpenChannel"];
+    post: operations['StoreLightningNodeApi_OpenChannel'];
   };
-  "/api/v1/stores/{storeId}/lightning/{cryptoCode}/address": {
+  '/api/v1/stores/{storeId}/lightning/{cryptoCode}/address': {
     /** Get an on-chain deposit address for the lightning node */
-    post: operations["StoreLightningNodeApi_GetDepositAddress"];
+    post: operations['StoreLightningNodeApi_GetDepositAddress'];
   };
-  "/api/v1/stores/{storeId}/lightning/{cryptoCode}/invoices/{id}": {
+  '/api/v1/stores/{storeId}/lightning/{cryptoCode}/invoices/{id}': {
     /** View information about the requested lightning invoice */
-    get: operations["StoreLightningNodeApi_GetInvoice"];
+    get: operations['StoreLightningNodeApi_GetInvoice'];
   };
-  "/api/v1/stores/{storeId}/lightning/{cryptoCode}/invoices/pay": {
+  '/api/v1/stores/{storeId}/lightning/{cryptoCode}/invoices/pay': {
     /** Pay a lightning invoice. */
-    post: operations["StoreLightningNodeApi_PayInvoice"];
+    post: operations['StoreLightningNodeApi_PayInvoice'];
   };
-  "/api/v1/stores/{storeId}/lightning/{cryptoCode}/invoices": {
+  '/api/v1/stores/{storeId}/lightning/{cryptoCode}/invoices': {
     /** Create a lightning invoice. */
-    post: operations["StoreLightningNodeApi_CreateInvoice"];
+    post: operations['StoreLightningNodeApi_CreateInvoice'];
   };
-  "/misc/permissions": {
+  '/misc/permissions': {
     /** The metadata of available permissions */
-    get: operations["permissionsMetadata"];
+    get: operations['permissionsMetadata'];
   };
-  "/misc/lang": {
+  '/misc/lang': {
     /** The supported language codes */
-    get: operations["langCodes"];
+    get: operations['langCodes'];
   };
-  "/i/{invoiceId}": {
+  '/i/{invoiceId}': {
     /** View the checkout page of an invoice */
     get: {
       parameters: {
@@ -220,7 +220,7 @@ export interface paths {
         /** The checkout page */
         200: {
           content: {
-            "text/html": unknown;
+            'text/html': unknown;
           };
         };
       };
@@ -236,37 +236,37 @@ export interface paths {
       };
     };
   };
-  "/api/v1/users/me/notifications": {
+  '/api/v1/users/me/notifications': {
     /** View current user's notifications */
-    get: operations["Notifications_GetNotifications"];
+    get: operations['Notifications_GetNotifications'];
   };
-  "/api/v1/users/me/notifications/{id}": {
+  '/api/v1/users/me/notifications/{id}': {
     /** View information about the specified notification */
-    get: operations["Notifications_GetNotification"];
+    get: operations['Notifications_GetNotification'];
     /** Updates the notification */
-    put: operations["Notifications_UpdateNotification"];
+    put: operations['Notifications_UpdateNotification'];
     /** Removes the specified notification. */
-    delete: operations["Notifications_DeleteNotification"];
+    delete: operations['Notifications_DeleteNotification'];
   };
-  "/api/v1/stores/{storeId}/payment-requests": {
+  '/api/v1/stores/{storeId}/payment-requests': {
     /** View information about the existing payment requests */
-    get: operations["PaymentRequests_GetPaymentRequests"];
+    get: operations['PaymentRequests_GetPaymentRequests'];
     /** Create a new payment request */
-    post: operations["PaymentRequests_CreatePaymentRequest"];
+    post: operations['PaymentRequests_CreatePaymentRequest'];
   };
-  "/api/v1/stores/{storeId}/payment-requests/{paymentRequestId}": {
+  '/api/v1/stores/{storeId}/payment-requests/{paymentRequestId}': {
     /** View information about the specified payment request */
-    get: operations["PaymentRequests_GetPaymentRequest"];
+    get: operations['PaymentRequests_GetPaymentRequest'];
     /** Update a payment request */
-    put: operations["PaymentRequests_UpdatePaymentRequest"];
+    put: operations['PaymentRequests_UpdatePaymentRequest'];
     /** Archives the specified payment request. */
-    delete: operations["PaymentRequests_ArchivePaymentRequest"];
+    delete: operations['PaymentRequests_ArchivePaymentRequest'];
   };
-  "/api/v1/stores/{storeId}/pull-payments": {
+  '/api/v1/stores/{storeId}/pull-payments': {
     /** Get the pull payments of a store */
-    get: operations["PullPayments_GetPullPayments"];
+    get: operations['PullPayments_GetPullPayments'];
     /** A pull payment allows its receiver to ask for payouts up to `amount` of `currency` every `period`. */
-    post: operations["PullPayments_CreatePullPayment"];
+    post: operations['PullPayments_CreatePullPayment'];
     parameters: {
       path: {
         /** The store ID */
@@ -274,9 +274,9 @@ export interface paths {
       };
     };
   };
-  "/api/v1/pull-payments/{pullPaymentId}": {
+  '/api/v1/pull-payments/{pullPaymentId}': {
     /** Get a pull payment */
-    get: operations["PullPayments_GetPullPayment"];
+    get: operations['PullPayments_GetPullPayment'];
     parameters: {
       path: {
         /** The ID of the pull payment */
@@ -284,9 +284,9 @@ export interface paths {
       };
     };
   };
-  "/api/v1/stores/{storeId}/pull-payments/{pullPaymentId}": {
+  '/api/v1/stores/{storeId}/pull-payments/{pullPaymentId}': {
     /** Archive this pull payment (Will cancel all payouts awaiting for payment) */
-    delete: operations["PullPayments_ArchivePullPayment"];
+    delete: operations['PullPayments_ArchivePullPayment'];
     parameters: {
       path: {
         /** The ID of the store */
@@ -296,11 +296,11 @@ export interface paths {
       };
     };
   };
-  "/api/v1/pull-payments/{pullPaymentId}/payouts": {
+  '/api/v1/pull-payments/{pullPaymentId}/payouts': {
     /** Get payouts */
-    get: operations["PullPayments_GetPayouts"];
+    get: operations['PullPayments_GetPayouts'];
     /** Create a new payout */
-    post: operations["PullPayments_CreatePayout"];
+    post: operations['PullPayments_CreatePayout'];
     parameters: {
       path: {
         /** The ID of the pull payment */
@@ -308,11 +308,11 @@ export interface paths {
       };
     };
   };
-  "/api/v1/stores/{storeId}/payouts/{payoutId}": {
+  '/api/v1/stores/{storeId}/payouts/{payoutId}': {
     /** Approve a payout */
-    post: operations["PullPayments_ApprovePayout"];
+    post: operations['PullPayments_ApprovePayout'];
     /** Cancel the payout */
-    delete: operations["PullPayments_CancelPayout"];
+    delete: operations['PullPayments_CancelPayout'];
     parameters: {
       path: {
         /** The ID of the store */
@@ -322,9 +322,9 @@ export interface paths {
       };
     };
   };
-  "/api/v1/stores/{storeId}/payouts/{payoutId}/mark-paid": {
+  '/api/v1/stores/{storeId}/payouts/{payoutId}/mark-paid': {
     /** Mark a payout as paid */
-    post: operations["PullPayments_MarkPayoutPaid"];
+    post: operations['PullPayments_MarkPayoutPaid'];
     parameters: {
       path: {
         /** The ID of the store */
@@ -334,23 +334,23 @@ export interface paths {
       };
     };
   };
-  "/api/v1/server/info": {
+  '/api/v1/server/info': {
     /** Information about the server, chains and sync states */
-    get: operations["ServerInfo_GetServerInfo"];
+    get: operations['ServerInfo_GetServerInfo'];
   };
-  "/api/v1/stores/{storeId}/payment-methods": {
+  '/api/v1/stores/{storeId}/payment-methods': {
     /** View information about the stores' configured payment methods */
-    get: operations["StorePaymentMethods_GetStorePaymentMethods"];
+    get: operations['StorePaymentMethods_GetStorePaymentMethods'];
   };
-  "/api/v1/stores/{storeId}/payment-methods/LightningNetwork": {
+  '/api/v1/stores/{storeId}/payment-methods/LightningNetwork': {
     /** View information about the stores' configured Lightning Network payment methods */
-    get: operations["StoreLightningNetworkPaymentMethods_GetLightningNetworkPaymentMethods"];
+    get: operations['StoreLightningNetworkPaymentMethods_GetLightningNetworkPaymentMethods'];
   };
-  "/api/v1/stores/{storeId}/payment-methods/LightningNetwork/{cryptoCode}": {
+  '/api/v1/stores/{storeId}/payment-methods/LightningNetwork/{cryptoCode}': {
     /** View information about the specified payment method */
-    get: operations["StoreLightningNetworkPaymentMethods_GetLightningNetworkPaymentMethod"];
+    get: operations['StoreLightningNetworkPaymentMethods_GetLightningNetworkPaymentMethod'];
     /** Update the specified store's payment method */
-    put: operations["StoreLightningNetworkPaymentMethods_UpdateLightningNetworkPaymentMethod"];
+    put: operations['StoreLightningNetworkPaymentMethods_UpdateLightningNetworkPaymentMethod'];
     /** Removes the specified store payment method. */
     delete: {
       parameters: {
@@ -367,7 +367,7 @@ export interface paths {
         /** A list of errors that occurred when removing the payment method */
         400: {
           content: {
-            "application/json": components["schemas"]["ValidationProblemDetails"];
+            'application/json': components['schemas']['ValidationProblemDetails'];
           };
         };
         /** If you are authenticated but forbidden to remove the specified payment method */
@@ -377,15 +377,15 @@ export interface paths {
       };
     };
   };
-  "/api/v1/stores/{storeId}/payment-methods/LNURL": {
+  '/api/v1/stores/{storeId}/payment-methods/LNURL': {
     /** View information about the stores' configured LNURL payment methods */
-    get: operations["StoreLNURLPayPaymentMethods_GetLNURLPayPaymentMethods"];
+    get: operations['StoreLNURLPayPaymentMethods_GetLNURLPayPaymentMethods'];
   };
-  "/api/v1/stores/{storeId}/payment-methods/LNURL/{cryptoCode}": {
+  '/api/v1/stores/{storeId}/payment-methods/LNURL/{cryptoCode}': {
     /** View information about the specified payment method */
-    get: operations["StoreLNURLPayPaymentMethods_GetLNURLPayPaymentMethod"];
+    get: operations['StoreLNURLPayPaymentMethods_GetLNURLPayPaymentMethod'];
     /** Update the specified store's payment method */
-    put: operations["StoreLNURLPayPaymentMethods_UpdateLNURLPayPaymentMethod"];
+    put: operations['StoreLNURLPayPaymentMethods_UpdateLNURLPayPaymentMethod'];
     /** Removes the specified store payment method. */
     delete: {
       parameters: {
@@ -402,7 +402,7 @@ export interface paths {
         /** A list of errors that occurred when removing the payment method */
         400: {
           content: {
-            "application/json": components["schemas"]["ValidationProblemDetails"];
+            'application/json': components['schemas']['ValidationProblemDetails'];
           };
         };
         /** If you are authenticated but forbidden to remove the specified payment method */
@@ -412,15 +412,15 @@ export interface paths {
       };
     };
   };
-  "/api/v1/stores/{storeId}/payment-methods/OnChain": {
+  '/api/v1/stores/{storeId}/payment-methods/OnChain': {
     /** View information about the stores' configured on-chain payment methods */
-    get: operations["StoreOnChainPaymentMethods_GetOnChainPaymentMethods"];
+    get: operations['StoreOnChainPaymentMethods_GetOnChainPaymentMethods'];
   };
-  "/api/v1/stores/{storeId}/payment-methods/onchain/{cryptoCode}": {
+  '/api/v1/stores/{storeId}/payment-methods/onchain/{cryptoCode}': {
     /** View information about the specified payment method */
-    get: operations["StoreOnChainPaymentMethods_GetOnChainPaymentMethod"];
+    get: operations['StoreOnChainPaymentMethods_GetOnChainPaymentMethod'];
     /** Update the specified store's payment method */
-    put: operations["StoreOnChainPaymentMethods_UpdateOnChainPaymentMethod"];
+    put: operations['StoreOnChainPaymentMethods_UpdateOnChainPaymentMethod'];
     /** Removes the specified store payment method. */
     delete: {
       parameters: {
@@ -437,7 +437,7 @@ export interface paths {
         /** A list of errors that occurred when removing the payment method */
         400: {
           content: {
-            "application/json": components["schemas"]["ValidationProblemDetails"];
+            'application/json': components['schemas']['ValidationProblemDetails'];
           };
         };
         /** If you are authenticated but forbidden to remove the specified payment method */
@@ -447,56 +447,56 @@ export interface paths {
       };
     };
   };
-  "/api/v1/stores/{storeId}/payment-methods/OnChain/{cryptoCode}/preview": {
+  '/api/v1/stores/{storeId}/payment-methods/OnChain/{cryptoCode}/preview': {
     /** View addresses of the current payment method of the store */
-    get: operations["StoreOnChainPaymentMethods_GetOnChainPaymentMethodPreview"];
+    get: operations['StoreOnChainPaymentMethods_GetOnChainPaymentMethodPreview'];
     /** View addresses of a proposed payment method of the store */
-    post: operations["StoreOnChainPaymentMethods_GetOnChainPaymentMethodPreview"];
+    post: operations['StoreOnChainPaymentMethods_GetOnChainPaymentMethodPreview'];
   };
-  "/api/v1/stores/{storeId}/payment-methods/OnChain/{cryptoCode}/wallet": {
+  '/api/v1/stores/{storeId}/payment-methods/OnChain/{cryptoCode}/wallet': {
     /** View information about the specified wallet */
-    get: operations["StoreOnChainWallets_ShowOnChainWalletOverview"];
+    get: operations['StoreOnChainWallets_ShowOnChainWalletOverview'];
   };
-  "/api/v1/stores/{storeId}/payment-methods/OnChain/{cryptoCode}/wallet/feeRate": {
+  '/api/v1/stores/{storeId}/payment-methods/OnChain/{cryptoCode}/wallet/feeRate': {
     /** Get wallet onchain fee rate */
-    get: operations["StoreOnChainWallets_GetOnChainFeeRate"];
+    get: operations['StoreOnChainWallets_GetOnChainFeeRate'];
   };
-  "/api/v1/stores/{storeId}/payment-methods/OnChain/{cryptoCode}/wallet/address": {
+  '/api/v1/stores/{storeId}/payment-methods/OnChain/{cryptoCode}/wallet/address': {
     /** Get or generate address for wallet */
-    get: operations["StoreOnChainWallets_GetOnChainWalletReceiveAddress"];
+    get: operations['StoreOnChainWallets_GetOnChainWalletReceiveAddress'];
     /** UnReserve address */
-    delete: operations["StoreOnChainWallets_UnReserveOnChainWalletReceiveAddress"];
+    delete: operations['StoreOnChainWallets_UnReserveOnChainWalletReceiveAddress'];
   };
-  "/api/v1/stores/{storeId}/payment-methods/OnChain/{cryptoCode}/wallet/transactions": {
+  '/api/v1/stores/{storeId}/payment-methods/OnChain/{cryptoCode}/wallet/transactions': {
     /** Get store on-chain wallet transactions */
-    get: operations["StoreOnChainWallets_ShowOnChainWalletTransactions"];
+    get: operations['StoreOnChainWallets_ShowOnChainWalletTransactions'];
     /** Create store on-chain wallet transaction */
-    post: operations["StoreOnChainWallets_CreateOnChainTransaction"];
+    post: operations['StoreOnChainWallets_CreateOnChainTransaction'];
   };
-  "/api/v1/stores/{storeId}/payment-methods/OnChain/{cryptoCode}/wallet/transactions/{transactionId}": {
+  '/api/v1/stores/{storeId}/payment-methods/OnChain/{cryptoCode}/wallet/transactions/{transactionId}': {
     /** Get store on-chain wallet transaction */
-    get: operations["StoreOnChainWallets_GetOnChainWalletTransaction"];
+    get: operations['StoreOnChainWallets_GetOnChainWalletTransaction'];
   };
-  "/api/v1/stores/{storeId}/payment-methods/OnChain/{cryptoCode}/wallet/utxos": {
+  '/api/v1/stores/{storeId}/payment-methods/OnChain/{cryptoCode}/wallet/utxos': {
     /** Get store on-chain wallet utxos */
-    get: operations["StoreOnChainWallets_GetOnChainWalletUTXOs"];
+    get: operations['StoreOnChainWallets_GetOnChainWalletUTXOs'];
   };
-  "/api/v1/stores": {
+  '/api/v1/stores': {
     /** View information about the available stores */
-    get: operations["Stores_GetStores"];
+    get: operations['Stores_GetStores'];
     /** Create a new store */
     post: {
       responses: {
         /** Information about the new store */
         200: {
           content: {
-            "application/json": components["schemas"]["StoreData"];
+            'application/json': components['schemas']['StoreData'];
           };
         };
         /** A list of errors that occurred when creating the store */
         400: {
           content: {
-            "application/json": components["schemas"]["ValidationProblemDetails"];
+            'application/json': components['schemas']['ValidationProblemDetails'];
           };
         };
         /** If you are authenticated but forbidden to add new stores */
@@ -504,16 +504,16 @@ export interface paths {
       };
       requestBody: {
         content: {
-          "application/json": components["schemas"]["StoreBaseData"];
+          'application/json': components['schemas']['StoreBaseData'];
         };
       };
     };
   };
-  "/api/v1/stores/{storeId}": {
+  '/api/v1/stores/{storeId}': {
     /** View information about the specified store */
-    get: operations["Stores_GetStore"];
+    get: operations['Stores_GetStore'];
     /** Update the specified store */
-    put: operations["Stores_UpdateStore"];
+    put: operations['Stores_UpdateStore'];
     /** Removes the specified store. If there is another user with access, only your access will be removed. */
     delete: {
       parameters: {
@@ -528,7 +528,7 @@ export interface paths {
         /** A list of errors that occurred when removing the store */
         400: {
           content: {
-            "application/json": components["schemas"]["ValidationProblemDetails"];
+            'application/json': components['schemas']['ValidationProblemDetails'];
           };
         };
         /** If you are authenticated but forbidden to remove the specified store */
@@ -538,13 +538,13 @@ export interface paths {
       };
     };
   };
-  "/api/v1/users/me": {
+  '/api/v1/users/me': {
     /** View information about the current user */
-    get: operations["Users_GetCurrentUser"];
+    get: operations['Users_GetCurrentUser'];
     /** Deletes user profile and associated user data for user making the request */
-    delete: operations["Users_DeleteCurrentUser"];
+    delete: operations['Users_DeleteCurrentUser'];
   };
-  "/api/v1/users": {
+  '/api/v1/users': {
     /**
      * Create a new user.
      *
@@ -559,13 +559,13 @@ export interface paths {
         /** Information about the new user */
         201: {
           content: {
-            "application/json": components["schemas"]["ApplicationUserData"];
+            'application/json': components['schemas']['ApplicationUserData'];
           };
         };
         /** A list of errors that occurred when creating the user */
         400: {
           content: {
-            "application/json": components["schemas"]["ValidationProblemDetails"];
+            'application/json': components['schemas']['ValidationProblemDetails'];
           };
         };
         /** If you need to authenticate for this endpoint (ie. the server settings policies lock subscriptions and that an admin already exists) */
@@ -577,7 +577,7 @@ export interface paths {
       };
       requestBody: {
         content: {
-          "application/json": {
+          'application/json': {
             /** The email of the new user */
             email?: string;
             /** The password of the new user */
@@ -589,7 +589,7 @@ export interface paths {
       };
     };
   };
-  "/api/v1/users/{userId}": {
+  '/api/v1/users/{userId}': {
     /**
      * Delete a user.
      *
@@ -618,9 +618,9 @@ export interface paths {
       };
     };
   };
-  "/api/v1/stores/{storeId}/webhooks": {
+  '/api/v1/stores/{storeId}/webhooks': {
     /** View webhooks of a store */
-    get: operations["Webhokks_GetWebhooks"];
+    get: operations['Webhokks_GetWebhooks'];
     /** Create a new webhook */
     post: {
       parameters: {
@@ -633,19 +633,19 @@ export interface paths {
         /** Information about the new webhook */
         200: {
           content: {
-            "application/json": components["schemas"]["WebhookDataCreate"];
+            'application/json': components['schemas']['WebhookDataCreate'];
           };
         };
         /** A list of errors that occurred when creating the webhook */
         400: {
           content: {
-            "application/json": components["schemas"]["ValidationProblemDetails"];
+            'application/json': components['schemas']['ValidationProblemDetails'];
           };
         };
       };
       requestBody: {
         content: {
-          "application/json": components["schemas"]["WebhookDataCreate"];
+          'application/json': components['schemas']['WebhookDataCreate'];
         };
       };
     };
@@ -656,9 +656,9 @@ export interface paths {
       };
     };
   };
-  "/api/v1/stores/{storeId}/webhooks/{webhookId}": {
+  '/api/v1/stores/{storeId}/webhooks/{webhookId}': {
     /** View webhook of a store */
-    get: operations["Webhokks_GetWebhook"];
+    get: operations['Webhokks_GetWebhook'];
     /** Update a webhook */
     put: {
       parameters: {
@@ -673,19 +673,19 @@ export interface paths {
         /** Information about the updated webhook */
         200: {
           content: {
-            "application/json": components["schemas"]["WebhookData"];
+            'application/json': components['schemas']['WebhookData'];
           };
         };
         /** A list of errors that occurred when creating the webhook */
         400: {
           content: {
-            "application/json": components["schemas"]["ValidationProblemDetails"];
+            'application/json': components['schemas']['ValidationProblemDetails'];
           };
         };
       };
       requestBody: {
         content: {
-          "application/json": components["schemas"]["WebhookDataBase"];
+          'application/json': components['schemas']['WebhookDataBase'];
         };
       };
     };
@@ -707,7 +707,7 @@ export interface paths {
       };
       requestBody: {
         content: {
-          "application/json": components["schemas"]["WebhookDataBase"];
+          'application/json': components['schemas']['WebhookDataBase'];
         };
       };
     };
@@ -720,7 +720,7 @@ export interface paths {
       };
     };
   };
-  "/api/v1/stores/{storeId}/webhooks/{webhookId}/deliveries": {
+  '/api/v1/stores/{storeId}/webhooks/{webhookId}/deliveries': {
     /** List the latest deliveries to the webhook, ordered from the most recent */
     get: {
       parameters: {
@@ -739,7 +739,7 @@ export interface paths {
         /** List of deliveries */
         200: {
           content: {
-            "application/json": components["schemas"]["WebhookDeliveryList"];
+            'application/json': components['schemas']['WebhookDeliveryList'];
           };
         };
       };
@@ -753,7 +753,7 @@ export interface paths {
       };
     };
   };
-  "/api/v1/stores/{storeId}/webhooks/{webhookId}/deliveries/{deliveryId}": {
+  '/api/v1/stores/{storeId}/webhooks/{webhookId}/deliveries/{deliveryId}': {
     /** Information about a webhook delivery */
     get: {
       parameters: {
@@ -770,7 +770,7 @@ export interface paths {
         /** Information about a delivery */
         200: {
           content: {
-            "application/json": components["schemas"]["WebhookDeliveryData"];
+            'application/json': components['schemas']['WebhookDeliveryData'];
           };
         };
         /** The delivery does not exists. */
@@ -788,7 +788,7 @@ export interface paths {
       };
     };
   };
-  "/api/v1/stores/{storeId}/webhooks/{webhookId}/deliveries/{deliveryId}/request": {
+  '/api/v1/stores/{storeId}/webhooks/{webhookId}/deliveries/{deliveryId}/request': {
     /** The delivery's JSON request sent to the endpoint */
     get: {
       parameters: {
@@ -805,7 +805,7 @@ export interface paths {
         /** The delivery's JSON Request */
         200: {
           content: {
-            "application/json": { [key: string]: unknown };
+            'application/json': {[key: string]: unknown};
           };
         };
         /** The delivery does not exists. */
@@ -823,7 +823,7 @@ export interface paths {
       };
     };
   };
-  "/api/v1/stores/{storeId}/webhooks/{webhookId}/deliveries/{deliveryId}/redeliver": {
+  '/api/v1/stores/{storeId}/webhooks/{webhookId}/deliveries/{deliveryId}/redeliver': {
     /** Redeliver the delivery */
     post: {
       parameters: {
@@ -840,7 +840,7 @@ export interface paths {
         /** The new delivery id being broadcasted. (Broadcast happen asynchronously with this call) */
         200: {
           content: {
-            "application/json": string;
+            'application/json': string;
           };
         };
         /** The delivery does not exists. */
@@ -874,31 +874,31 @@ export interface components {
       /** True if the instance is fully synchronized, according to NBXplorer */
       synchronized?: boolean;
     };
-    InvoiceDataList: components["schemas"]["InvoiceData"][];
+    InvoiceDataList: components['schemas']['InvoiceData'][];
     MarkInvoiceStatusRequest: {
       /** Mark an invoice as completed or invalid. */
-      status?: components["schemas"]["InvoiceStatusMark"];
+      status?: components['schemas']['InvoiceStatusMark'];
     };
     AddCustomerEmailRequest: {
       /** Sets the customer email, if it was not set before. */
       email?: string;
     };
-    InvoiceStatusMark: "Invalid" | "Settled";
-    InvoiceStatus: "New" | "Processing" | "Expired" | "Invalid" | "Settled";
+    InvoiceStatusMark: 'Invalid' | 'Settled';
+    InvoiceStatus: 'New' | 'Processing' | 'Expired' | 'Invalid' | 'Settled';
     /** An additional status that describes why an invoice is in its current status. */
     InvoiceAdditionalStatus:
-      | "None"
-      | "PaidLate"
-      | "PaidPartial"
-      | "Marked"
-      | "Invalid"
-      | "PaidOver";
+      | 'None'
+      | 'PaidLate'
+      | 'PaidPartial'
+      | 'Marked'
+      | 'Invalid'
+      | 'PaidOver';
     InvoiceDataBase: {
-      metadata?: components["schemas"]["InvoiceMetadata"];
+      metadata?: components['schemas']['InvoiceMetadata'];
       /** Additional settings to customize the checkout flow */
-      checkout?: components["schemas"]["CheckoutOptions"] | null;
+      checkout?: components['schemas']['CheckoutOptions'] | null;
     };
-    InvoiceData: components["schemas"]["InvoiceDataBase"] & {
+    InvoiceData: components['schemas']['InvoiceDataBase'] & {
       /** The identifier of the invoice */
       id?: string;
       /** The store identifier that the invoice belongs to */
@@ -908,28 +908,28 @@ export interface components {
       /** The currency of the invoice */
       currency?: string;
       /** The type of invoice */
-      type?: components["schemas"]["InvoiceType"];
+      type?: components['schemas']['InvoiceType'];
       /** The link to the checkout page, where you can redirect the customer */
       checkoutLink?: string;
       /** The creation time of the invoice */
-      createdTime?: components["schemas"]["UnixTimestamp"];
+      createdTime?: components['schemas']['UnixTimestamp'];
       /** The expiration time of the invoice */
-      expirationTime?: components["schemas"]["UnixTimestamp"];
+      expirationTime?: components['schemas']['UnixTimestamp'];
       /** The monitoring time of the invoice */
-      monitoringTime?: components["schemas"]["UnixTimestamp"];
+      monitoringTime?: components['schemas']['UnixTimestamp'];
       /** The status of the invoice */
-      status?: components["schemas"]["InvoiceStatus"];
+      status?: components['schemas']['InvoiceStatus'];
       /** a secondary status of the invoice */
-      additionalStatus?: components["schemas"]["InvoiceAdditionalStatus"];
+      additionalStatus?: components['schemas']['InvoiceAdditionalStatus'];
       /** The statuses the invoice can be manually marked as */
-      availableStatusesForManualMarking?: components["schemas"]["InvoiceStatus"][];
+      availableStatusesForManualMarking?: components['schemas']['InvoiceStatus'][];
       /** true if the invoice is archived */
       archived?: boolean;
     };
     /** shown on the invoice details page */
     InvoiceMetadataPosString: string;
     /** Any json object in any schema you want. Will be rendered on a best effort basis in terms of style on the invoice details UI */
-    InvoiceMetadataPosObject: { [key: string]: unknown };
+    InvoiceMetadataPosObject: {[key: string]: unknown};
     /** Additional information around the invoice that can be supplied. The mentioned properties are all optional and you can introduce any json format you wish. */
     InvoiceMetadata: (Partial<{
       /** You can use this property to store the ID of an external system. We allow you to search in the invoice list based on this ID. */
@@ -939,8 +939,8 @@ export interface components {
     }> &
       Partial<{
         posData?:
-          | components["schemas"]["InvoiceMetadataPosString"]
-          | components["schemas"]["InvoiceMetadataPosObject"];
+          | components['schemas']['InvoiceMetadataPosString']
+          | components['schemas']['InvoiceMetadataPosObject'];
       }> &
       Partial<{
         buyerName?: string | null;
@@ -980,8 +980,8 @@ export interface components {
       }> &
       Partial<{
         taxIncluded?: number | null;
-      }>) & { [key: string]: unknown };
-    CreateInvoiceRequest: components["schemas"]["InvoiceDataBase"] & {
+      }>) & {[key: string]: unknown};
+    CreateInvoiceRequest: components['schemas']['InvoiceDataBase'] & {
       /** The amount of the invoice. If null or unspecified, the invoice will be a top-up invoice. (ie. The invoice will consider any payment as a full payment) */
       amount?: string | null;
       /** The currency of the invoice (if null, empty or unspecified, the currency will be the store's settings default)' */
@@ -990,17 +990,17 @@ export interface components {
       additionalSearchTerms?: string[] | null;
     };
     UpdateInvoiceRequest: {
-      metadata?: components["schemas"]["InvoiceMetadata"];
+      metadata?: components['schemas']['InvoiceMetadata'];
     };
     CheckoutOptions: {
       /** This is a risk mitigation parameter for the merchant to configure how they want to fulfill orders depending on the number of block confirmations for the transaction made by the consumer on the selected cryptocurrency */
-      speedPolicy?: components["schemas"]["SpeedPolicy"] | null;
+      speedPolicy?: components['schemas']['SpeedPolicy'] | null;
       /** A specific set of payment methods to use for this invoice (ie. BTC, BTC-LightningNetwork). By default, select all payment methods enabled in the store. */
       paymentMethods?: string[] | null;
       /** Default payment type for the invoice (e.g., BTC, BTC-LightningNetwork). Default payment method set for the store is used if this parameter is not specified. */
       defaultPaymentMethod?: string | null;
       /** The number of minutes after which an invoice becomes expired. Defaults to the store's settings. (The default store settings is 15) */
-      expirationMinutes?: components["schemas"]["TimeSpanMinutes"] | null;
+      expirationMinutes?: components['schemas']['TimeSpanMinutes'] | null;
       /** The number of minutes after an invoice expired after which we are still monitoring for incoming payments. Defaults to the store's settings. (The default store settings is 1440, 1 day) */
       monitoringMinutes?: number | null;
       /** A percentage determining whether to count the invoice as paid when the invoice is paid within the specified margin of error. Defaults to the store's settings. (The default store settings is 100) */
@@ -1014,7 +1014,7 @@ export interface components {
       /** The language code (eg. en-US, en, fr-FR...) of the language presented to your customer in the checkout page. BTCPay Server tries to match the best language available. If null or not set, will fallback on the store's default language. You can see the list of language codes with [this operation](#operation/langCodes). */
       defaultLanguage?: string | null;
     };
-    SpeedPolicy: "HighSpeed" | "MediumSpeed" | "LowSpeed" | "LowMediumSpeed";
+    SpeedPolicy: 'HighSpeed' | 'MediumSpeed' | 'LowSpeed' | 'LowMediumSpeed';
     InvoicePaymentMethodDataModel: {
       /** The payment method */
       paymentMethod?: string;
@@ -1035,7 +1035,7 @@ export interface components {
       /** The added merchant fee to pay for network costs of this payment method. */
       networkFee?: string;
       /** Payments made with this payment method. */
-      payments?: components["schemas"]["Payment"][];
+      payments?: components['schemas']['Payment'][];
       /** If the payment method is activated (when lazy payments option is enabled */
       activated?: boolean;
     };
@@ -1043,18 +1043,18 @@ export interface components {
       /** A unique identifier for this payment */
       id?: string;
       /** The date the payment was recorded */
-      receivedDate?: components["schemas"]["UnixTimestamp"];
+      receivedDate?: components['schemas']['UnixTimestamp'];
       /** The value of the payment */
       value?: string;
       /** The fee paid for the payment */
       fee?: string;
       /** The status of the payment */
-      status?: components["schemas"]["PaymentStatus"];
+      status?: components['schemas']['PaymentStatus'];
       /** The destination the payment was made to */
       destination?: string;
     };
-    PaymentStatus: "Invalid" | "Processing" | "Settled";
-    InvoiceType: "Standard" | "TopUp";
+    PaymentStatus: 'Invalid' | 'Processing' | 'Settled';
+    InvoiceType: 'Standard' | 'TopUp';
     /** An array of validation errors of the request */
     ValidationProblemDetails: {
       /** The json path of the property which failed validation */
@@ -1073,9 +1073,9 @@ export interface components {
     UnixTimestamp: number;
     TimeSpan: number;
     /** A span of times in seconds */
-    TimeSpanSeconds: components["schemas"]["TimeSpan"];
+    TimeSpanSeconds: components['schemas']['TimeSpan'];
     /** A span of times in minutes */
-    TimeSpanMinutes: components["schemas"]["TimeSpan"];
+    TimeSpanMinutes: components['schemas']['TimeSpan'];
     ConnectToNodeRequest: {
       /** Node URI in the form `pubkey@endpoint[:port]` */
       nodeURI?: string | null;
@@ -1086,7 +1086,7 @@ export interface components {
       /** Description of the invoice in the BOLT11 */
       description?: string | null;
       /** Expiration time in seconds */
-      expiry?: components["schemas"]["TimeSpanSeconds"];
+      expiry?: components['schemas']['TimeSpanSeconds'];
       /** True if the invoice should include private route hints */
       privateRouteHints?: boolean | null;
     };
@@ -1106,19 +1106,19 @@ export interface components {
     LightningInvoiceData: {
       /** The invoice's ID */
       id?: string;
-      status?: components["schemas"]["LightningInvoiceStatus"];
+      status?: components['schemas']['LightningInvoiceStatus'];
       /** The BOLT11 representation of the invoice */
       BOLT11?: string;
       /** The unix timestamp when the invoice got paid */
-      paidAt?: components["schemas"]["UnixTimestamp"] | null;
+      paidAt?: components['schemas']['UnixTimestamp'] | null;
       /** The unix timestamp when the invoice expires */
-      expiresAt?: components["schemas"]["UnixTimestamp"];
+      expiresAt?: components['schemas']['UnixTimestamp'];
       /** The amount of the invoice in millisatoshi */
       amount?: string;
       /** The amount received in millisatoshi */
       amountReceived?: string;
     };
-    LightningInvoiceStatus: "Unpaid" | "Paid" | "Expired";
+    LightningInvoiceStatus: 'Unpaid' | 'Paid' | 'Expired';
     LightningNodeInformationData: {
       /** Node URIs to connect to this node in the form `pubkey@endpoint[:port]` */
       nodeURIs?: string[];
@@ -1149,19 +1149,19 @@ export interface components {
       /** The link of the notification */
       link?: string | null;
       /** The creation time of the notification */
-      createdTime?: components["schemas"]["UnixTimestamp"];
+      createdTime?: components['schemas']['UnixTimestamp'];
       /** If the notification has been seen by the user */
       seen?: boolean;
     };
-    PaymentRequestDataList: components["schemas"]["PaymentRequestData"][];
+    PaymentRequestDataList: components['schemas']['PaymentRequestData'][];
     PaymentRequestData: {
       /** The id of the payment request */
       id?: string;
       /** The status of the payment request */
-      status?: "Pending" | "Completed" | "Expired";
+      status?: 'Pending' | 'Completed' | 'Expired';
       /** The creation date of the payment request */
-      created?: components["schemas"]["UnixTimestamp"];
-    } & { [key: string]: components["schemas"]["PaymentRequestBaseData"] };
+      created?: components['schemas']['UnixTimestamp'];
+    } & {[key: string]: components['schemas']['PaymentRequestBaseData']};
     PaymentRequestBaseData: {
       /** The amount of the payment request */
       amount?: string;
@@ -1174,7 +1174,7 @@ export interface components {
       /** The description of the payment request */
       description?: string | null;
       /** The expiry date of the payment request */
-      expiryDate?: components["schemas"]["UnixTimestamp"] | null;
+      expiryDate?: components['schemas']['UnixTimestamp'] | null;
       /** Custom CSS styling for the payment request */
       embeddedCSS?: string | null;
       /** Custom CSS link for styling the payment request */
@@ -1182,8 +1182,8 @@ export interface components {
       /** Whether to allow users to create invoices that partially pay the payment request */
       allowCustomPaymentAmounts?: boolean | null;
     };
-    PullPaymentDataList: components["schemas"]["PullPaymentData"][];
-    PayoutDataList: components["schemas"]["PayoutData"][];
+    PullPaymentDataList: components['schemas']['PullPaymentData'][];
+    PayoutDataList: components['schemas']['PayoutData'][];
     CreatePayoutRequest: {
       /** The destination of the payout (can be an address or a BIP21 url) */
       destination?: string;
@@ -1211,11 +1211,11 @@ export interface components {
       paymentMethodAmount?: string | null;
       /** The state of the payout (`AwaitingApproval`, `AwaitingPayment`, `InProgress`, `Completed`, `Cancelled`) */
       state?:
-        | "AwaitingApproval"
-        | "AwaitingPayment"
-        | "InProgress"
-        | "Completed"
-        | "Cancelled";
+        | 'AwaitingApproval'
+        | 'AwaitingPayment'
+        | 'InProgress'
+        | 'Completed'
+        | 'Cancelled';
     };
     PullPaymentData: {
       /** Id of the pull payment */
@@ -1242,7 +1242,7 @@ export interface components {
       supportedPaymentMethods?: string[];
       /** True if the instance is fully synchronized, according to NBXplorer */
       fullySynched?: boolean;
-      syncStatus?: components["schemas"]["ApplicationServerInfoSyncStatusData"][];
+      syncStatus?: components['schemas']['ApplicationServerInfoSyncStatusData'][];
     };
     /** Detailed sync status of the internal full node */
     ApplicationServerInfoNodeStatusData: {
@@ -1257,7 +1257,7 @@ export interface components {
     ApplicationServerInfoSyncStatusData: {
       /** The CryptoCode of the crypto currency (eg. BTC) */
       cryptoCode?: string;
-      nodeInformation?: components["schemas"]["ApplicationServerInfoNodeStatusData"];
+      nodeInformation?: components['schemas']['ApplicationServerInfoNodeStatusData'];
       /** The height of the chain of header of the internal indexer */
       chainHeight?: number;
       /** The height of the latest indexed block of the internal indexer */
@@ -1270,11 +1270,11 @@ export interface components {
       cryptoCode?: boolean;
       /** Associated dynamic data based on payment method type. */
       data?:
-        | components["schemas"]["OnChainPaymentMethodBaseData"]
-        | components["schemas"]["LightningNetworkPaymentMethodBaseData"]
-        | { [key: string]: unknown };
+        | components['schemas']['OnChainPaymentMethodBaseData']
+        | components['schemas']['LightningNetworkPaymentMethodBaseData']
+        | {[key: string]: unknown};
     };
-    LightningNetworkPaymentMethodDataList: components["schemas"]["LightningNetworkPaymentMethodData"][];
+    LightningNetworkPaymentMethodDataList: components['schemas']['LightningNetworkPaymentMethodData'][];
     LightningNetworkPaymentMethodBaseData: {
       /** The lightning connection string. Set to 'Internal Node' to use the internal node. (See [this doc](https://github.com/btcpayserver/BTCPayServer.Lightning/blob/master/README.md#examples) for some example) */
       connectionString?: string;
@@ -1291,7 +1291,7 @@ export interface components {
     } & {
       [
         key: string
-      ]: components["schemas"]["LightningNetworkPaymentMethodBaseData"];
+      ]: components['schemas']['LightningNetworkPaymentMethodBaseData'];
     };
     UpdateLightningNetworkPaymentMethodRequest: {
       /** Whether the payment method is enabled */
@@ -1299,9 +1299,9 @@ export interface components {
     } & {
       [
         key: string
-      ]: components["schemas"]["LightningNetworkPaymentMethodBaseData"];
+      ]: components['schemas']['LightningNetworkPaymentMethodBaseData'];
     };
-    LNURLPayPaymentMethodDataList: components["schemas"]["LNURLPayPaymentMethodData"][];
+    LNURLPayPaymentMethodDataList: components['schemas']['LNURLPayPaymentMethodData'][];
     LNURLPayPaymentMethodBaseData: {
       /** Whether to use [LUD-01](https://github.com/fiatjaf/lnurl-rfc/blob/luds/01.md)'s bech32 format or to use [LUD-17](https://github.com/fiatjaf/lnurl-rfc/blob/luds/17.md) url formatting. */
       useBech32Scheme?: boolean;
@@ -1316,10 +1316,10 @@ export interface components {
       /** Crypto code of the payment method */
       cryptoCode?: string;
     } & {
-      [key: string]: components["schemas"]["LNURLPayPaymentMethodBaseData"];
+      [key: string]: components['schemas']['LNURLPayPaymentMethodBaseData'];
     };
-    OnChainPaymentMethodDataList: components["schemas"]["OnChainPaymentMethodData"][];
-    OnChainPaymentMethodDataWithSensitiveData: components["schemas"]["OnChainPaymentMethodData"] & {
+    OnChainPaymentMethodDataList: components['schemas']['OnChainPaymentMethodData'][];
+    OnChainPaymentMethodDataWithSensitiveData: components['schemas']['OnChainPaymentMethodData'] & {
       /** The mnemonic used to generate the wallet */
       mnemonic?: string;
     };
@@ -1335,7 +1335,7 @@ export interface components {
       /** Whether the payment method is enabled */
       enabled?: boolean;
     } & {
-      [key: string]: components["schemas"]["OnChainPaymentMethodBaseData"];
+      [key: string]: components['schemas']['OnChainPaymentMethodBaseData'];
     };
     OnChainPaymentMethodData: {
       /** Whether the payment method is enabled */
@@ -1343,17 +1343,17 @@ export interface components {
       /** The payment method */
       paymentMethod?: string;
     } & {
-      [key: string]: components["schemas"]["OnChainPaymentMethodDataPreview"];
+      [key: string]: components['schemas']['OnChainPaymentMethodDataPreview'];
     };
     OnChainPaymentMethodDataPreview: {
       /** Crypto code of the payment method */
       cryptoCode?: string;
     } & {
-      [key: string]: components["schemas"]["OnChainPaymentMethodBaseData"];
+      [key: string]: components['schemas']['OnChainPaymentMethodBaseData'];
     };
     OnChainPaymentMethodPreviewResultData: {
       /** a list of addresses generated by the derivation scheme */
-      addresses?: components["schemas"]["OnChainPaymentMethodPreviewResultAddressItem"][];
+      addresses?: components['schemas']['OnChainPaymentMethodPreviewResultAddressItem'][];
     };
     OnChainPaymentMethodPreviewResultAddressItem: {
       /** The key path relative to the account key path. */
@@ -1374,18 +1374,18 @@ export interface components {
       importKeysToRPC?: boolean;
       /** If `existingMnemonic` is not set, a mnemonic is generated using the specified wordList. */
       wordList?:
-        | "English"
-        | "Japanese"
-        | "Spanish"
-        | "ChineseSimplified"
-        | "ChineseTraditional"
-        | "French"
-        | "PortugueseBrazil"
-        | "Czech";
+        | 'English'
+        | 'Japanese'
+        | 'Spanish'
+        | 'ChineseSimplified'
+        | 'ChineseTraditional'
+        | 'French'
+        | 'PortugueseBrazil'
+        | 'Czech';
       /** If `existingMnemonic` is not set, a mnemonic is generated using the specified wordCount. */
       wordCount?: 12 | 15 | 18 | 21 | 24;
       /** the type of wallet to generate */
-      scriptPubKeyType?: "Legacy" | "Segwit" | "SegwitP2SH";
+      scriptPubKeyType?: 'Legacy' | 'Segwit' | 'SegwitP2SH';
     };
     OnChainWalletOverviewData: {
       /** The total current balance of the wallet */
@@ -1407,13 +1407,13 @@ export interface components {
       /** a bip21 payment link */
       paymentLink?: string;
     };
-    TransactionStatus: "Unconfirmed" | "Confirmed" | "Replaced";
+    TransactionStatus: 'Unconfirmed' | 'Confirmed' | 'Replaced';
     LabelData: {
       /** The type of label */
       type?: string;
       /** Information about this label */
       text?: string;
-    } & { [key: string]: unknown };
+    } & {[key: string]: unknown};
     OnChainWalletTransactionData: {
       /** The transaction id */
       transactionHash?: string | null;
@@ -1428,11 +1428,11 @@ export interface components {
       /** The number of confirmations for this transaction */
       confirmations?: string | null;
       /** The time of the transaction */
-      timestamp?: components["schemas"]["UnixTimestamp"];
+      timestamp?: components['schemas']['UnixTimestamp'];
       /** The status for this transaction */
-      status?: components["schemas"]["TransactionStatus"];
+      status?: components['schemas']['TransactionStatus'];
       /** Labels linked to this transaction */
-      labels?: { [key: string]: components["schemas"]["LabelData"] };
+      labels?: {[key: string]: components['schemas']['LabelData']};
     };
     OnChainWalletUTXOData: {
       /** A comment linked to this utxo */
@@ -1444,7 +1444,7 @@ export interface components {
       /** outpoint of this utxo */
       outpoint?: string;
       /** The time of the utxo */
-      timestamp?: components["schemas"]["UnixTimestamp"];
+      timestamp?: components['schemas']['UnixTimestamp'];
       /** the derivation path in relation to the HD account */
       keyPath?: string;
       /** The wallet address of this utxo */
@@ -1452,7 +1452,7 @@ export interface components {
       /** The number of confirmations of this utxo */
       confirmations?: number;
       /** Labels linked to this transaction */
-      labels?: { [key: string]: components["schemas"]["LabelData"] };
+      labels?: {[key: string]: components['schemas']['LabelData']};
     };
     CreateOnChainTransactionRequestDestination: {
       /** A wallet address or a BIP21 payment link */
@@ -1464,7 +1464,7 @@ export interface components {
     };
     CreateOnChainTransactionRequest: {
       /** What and where to send money */
-      destinations?: components["schemas"]["CreateOnChainTransactionRequestDestination"][];
+      destinations?: components['schemas']['CreateOnChainTransactionRequestDestination'][];
       /** A wallet address or a BIP21 payment link */
       feeRate?: number;
       /** Whether to attempt to do a BIP78 payjoin if one of the destinations is a BIP21 with payjoin enabled */
@@ -1478,8 +1478,8 @@ export interface components {
       /** Restrict the creation of the transactions from the outpoints provided ONLY (coin selection) */
       selectedInputs?: string[] | null;
     };
-    StoreDataList: components["schemas"]["StoreData"][];
-    StoreData: components["schemas"]["StoreBaseData"] & {
+    StoreDataList: components['schemas']['StoreData'][];
+    StoreData: components['schemas']['StoreBaseData'] & {
       /** The id of the store */
       id?: string;
     };
@@ -1491,10 +1491,10 @@ export interface components {
       /** The default currency of the store */
       defaultCurrency?: string;
       /** The time after which an invoice is considered expired if not paid. The value will be rounded down to a minute. */
-      invoiceExpiration?: components["schemas"]["TimeSpanSeconds"];
+      invoiceExpiration?: components['schemas']['TimeSpanSeconds'];
       /** The time after which an invoice which has been paid but not confirmed will be considered invalid. The value will be rounded down to a minute. */
-      monitoringExpiration?: components["schemas"]["TimeSpanSeconds"];
-      speedPolicy?: components["schemas"]["SpeedPolicy"];
+      monitoringExpiration?: components['schemas']['TimeSpanSeconds'];
+      speedPolicy?: components['schemas']['SpeedPolicy'];
       /** The BOLT11 description of the lightning invoice in the checkout. You can use placeholders '{StoreName}', '{ItemDescription}' and '{OrderId}'. */
       lightningDescriptionTemplate?: string | null;
       /** Consider an invoice fully paid, even if the payment is missing 'x' % of the full amount. */
@@ -1522,7 +1522,7 @@ export interface components {
       customCSS?: string | null;
       /** The HTML title of the checkout page (when you over the tab in your browser) */
       htmlTitle?: string | null;
-      networkFeeMode?: components["schemas"]["NetworkFeeMode"];
+      networkFeeMode?: components['schemas']['NetworkFeeMode'];
       /** If true, payjoin will be proposed in the checkout page if possible. ([More information](https://docs.btcpayserver.org/Payjoin/)) */
       payJoinEnabled?: boolean;
       /** If true, payment methods are enabled individually upon user interaction in the invoice */
@@ -1531,7 +1531,7 @@ export interface components {
       defaultPaymentMethod?: string;
     };
     /** Check whether network fee should be added to the invoice if on-chain payment is used. ([More information](https://docs.btcpayserver.org/FAQ/Stores/#add-network-fee-to-invoice-vary-with-mining-fees)) */
-    NetworkFeeMode: "MultiplePaymentsOnly" | "Always" | "Never";
+    NetworkFeeMode: 'MultiplePaymentsOnly' | 'Always' | 'Never';
     ApplicationUserData: {
       /** The id of the user */
       id?: string;
@@ -1542,16 +1542,16 @@ export interface components {
       /** True if the email requires email confirmation to log in */
       requiresEmailConfirmation?: boolean;
       /** The creation date of the user as a unix timestamp. Null if created before v1.0.5.6 */
-      created?: components["schemas"]["UnixTimestamp"] | null;
+      created?: components['schemas']['UnixTimestamp'] | null;
       /** The roles of the user */
       roles?: string[];
     };
-    WebhookDeliveryList: components["schemas"]["WebhookDeliveryData"][];
+    WebhookDeliveryList: components['schemas']['WebhookDeliveryData'][];
     WebhookDeliveryData: {
       /** The id of the delivery */
       id?: string;
       /** Timestamp of when the delivery got broadcasted */
-      timestamp?: components["schemas"]["UnixTimestamp"];
+      timestamp?: components['schemas']['UnixTimestamp'];
       /** HTTP code received by the remote service, if any. */
       httpCode?: number | null;
       /** User friendly error message, if any. */
@@ -1559,12 +1559,12 @@ export interface components {
       /** Whether the delivery failed or not (possible values are: `Failed`, `HttpError`, `HttpSuccess`) */
       status?: string;
     };
-    WebhookDataList: components["schemas"]["WebhookData"][];
-    WebhookData: components["schemas"]["WebhookDataBase"] & {
+    WebhookDataList: components['schemas']['WebhookData'][];
+    WebhookData: components['schemas']['WebhookDataBase'] & {
       /** The id of the webhook */
       id?: string;
     };
-    WebhookDataCreate: components["schemas"]["WebhookData"] & {
+    WebhookDataCreate: components['schemas']['WebhookData'] & {
       /** Must be used by the callback receiver to ensure the delivery comes from BTCPay Server. BTCPay Server includes the `BTCPay-Sig` HTTP header, whose format is `sha256=HMAC256(UTF8(webhook's secret), body)`. The pattern to authenticate the webhook is similar to [how to secure webhooks in Github](https://docs.github.com/webhooks/securing/). */
       secret?: string;
     };
@@ -1597,16 +1597,16 @@ export interface components {
       /** The type of this event, current available are `InvoiceCreated`, `InvoiceReceivedPayment`, `InvoicePaidInFull`, `InvoiceExpired`, `InvoiceSettled`, and `InvoiceInvalid`. */
       type?: string;
       /** The timestamp when this delivery has been created */
-      timestamp?: components["schemas"]["UnixTimestamp"];
+      timestamp?: components['schemas']['UnixTimestamp'];
     };
-    WebhookInvoiceEvent: components["schemas"]["WebhookEvent"] & {
+    WebhookInvoiceEvent: components['schemas']['WebhookEvent'] & {
       /** The store id of the invoice's event */
       storeId?: string;
       /** The invoice id of the invoice's event */
       invoiceId?: string;
     };
     /** Callback sent if the `type` is `InvoiceSettled` */
-    WebhookInvoiceSettledEvent: components["schemas"]["WebhookInvoiceEvent"] & {
+    WebhookInvoiceSettledEvent: components['schemas']['WebhookInvoiceEvent'] & {
       /** Whether the invoice have been manually marked as confirmed */
       manuallyMarked?: boolean;
     } & {
@@ -1614,28 +1614,28 @@ export interface components {
       overPaid?: boolean;
     };
     /** Callback sent if the `type` is `InvoiceInvalid` */
-    WebhookInvoiceInvalidEvent: components["schemas"]["WebhookInvoiceEvent"] & {
+    WebhookInvoiceInvalidEvent: components['schemas']['WebhookInvoiceEvent'] & {
       /** Whether the invoice have been manually marked as confirmed. If false, this invoice has received payments which could not confirm in time. */
       manuallyMarked?: boolean;
     };
     /** Callback sent if the `type` is `InvoiceProcessing` */
-    WebhookInvoiceProcessingEvent: components["schemas"]["WebhookInvoiceEvent"] & {
+    WebhookInvoiceProcessingEvent: components['schemas']['WebhookInvoiceEvent'] & {
       /** Whether this invoice has received more money than expected */
       overPaid?: boolean;
     };
     /** Callback sent if the `type` is `InvoiceReceivedPayment` */
-    WebhookInvoiceReceivedPaymentEvent: components["schemas"]["WebhookInvoiceEvent"] & {
+    WebhookInvoiceReceivedPaymentEvent: components['schemas']['WebhookInvoiceEvent'] & {
       /** Whether this payment has been sent after expiration of the invoice */
       afterExpiration?: boolean;
       /** What payment method was used for this payment */
       paymentMethod?: string;
       /** Details about the payment */
-      payment?: components["schemas"]["InvoicePaymentMethodDataModel"];
+      payment?: components['schemas']['InvoicePaymentMethodDataModel'];
     };
     /** Callback sent if the `type` is `InvoicePaymentSettled` */
-    WebhookInvoicePaymentSettledEvent: components["schemas"]["WebhookInvoiceReceivedPaymentEvent"];
+    WebhookInvoicePaymentSettledEvent: components['schemas']['WebhookInvoiceReceivedPaymentEvent'];
     /** Callback sent if the `type` is `InvoiceExpired` */
-    WebhookInvoiceExpiredEvent: components["schemas"]["WebhookInvoiceEvent"] & {
+    WebhookInvoiceExpiredEvent: components['schemas']['WebhookInvoiceEvent'] & {
       /** Whether the invoice received some payments before being expired. */
       partiallyPaid?: boolean;
     };
@@ -1649,7 +1649,7 @@ export interface operations {
       /** Instance is up */
       200: {
         content: {
-          "application/json": components["schemas"]["ApplicationHealthData"];
+          'application/json': components['schemas']['ApplicationHealthData'];
         };
       };
     };
@@ -1676,7 +1676,7 @@ export interface operations {
       /** list of invoices */
       200: {
         content: {
-          "application/json": components["schemas"]["InvoiceDataList"];
+          'application/json': components['schemas']['InvoiceDataList'];
         };
       };
     };
@@ -1693,13 +1693,13 @@ export interface operations {
       /** Information about the new invoice */
       200: {
         content: {
-          "application/json": components["schemas"]["InvoiceData"];
+          'application/json': components['schemas']['InvoiceData'];
         };
       };
       /** A list of errors that occurred when creating the invoice */
       400: {
         content: {
-          "application/json": components["schemas"]["ValidationProblemDetails"];
+          'application/json': components['schemas']['ValidationProblemDetails'];
         };
       };
       /** If you are authenticated but forbidden to add new invoices */
@@ -1707,7 +1707,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["CreateInvoiceRequest"];
+        'application/json': components['schemas']['CreateInvoiceRequest'];
       };
     };
   };
@@ -1725,7 +1725,7 @@ export interface operations {
       /** specified invoice */
       200: {
         content: {
-          "application/json": components["schemas"]["InvoiceData"];
+          'application/json': components['schemas']['InvoiceData'];
         };
       };
       /** If you are authenticated but forbidden to view the specified invoice */
@@ -1748,13 +1748,13 @@ export interface operations {
       /** The invoice that has been updated */
       200: {
         content: {
-          "application/json": components["schemas"]["InvoiceData"];
+          'application/json': components['schemas']['InvoiceData'];
         };
       };
       /** A list of errors that occurred when updating the invoice */
       400: {
         content: {
-          "application/json": components["schemas"]["ValidationProblemDetails"];
+          'application/json': components['schemas']['ValidationProblemDetails'];
         };
       };
       /** If you are authenticated but forbidden to update the specified invoice */
@@ -1764,7 +1764,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["UpdateInvoiceRequest"];
+        'application/json': components['schemas']['UpdateInvoiceRequest'];
       };
     };
   };
@@ -1784,7 +1784,7 @@ export interface operations {
       /** A list of errors that occurred when archiving the invoice */
       400: {
         content: {
-          "application/json": components["schemas"]["ValidationProblemDetails"];
+          'application/json': components['schemas']['ValidationProblemDetails'];
         };
       };
       /** If you are authenticated but forbidden to archive the specified invoice */
@@ -1811,7 +1811,7 @@ export interface operations {
       /** specified invoice payment methods data */
       200: {
         content: {
-          "application/json": components["schemas"]["InvoicePaymentMethodDataModel"][];
+          'application/json': components['schemas']['InvoicePaymentMethodDataModel'][];
         };
       };
       /** If you are authenticated but forbidden to view the specified invoice */
@@ -1834,13 +1834,13 @@ export interface operations {
       /** The updated invoice */
       200: {
         content: {
-          "application/json": components["schemas"]["InvoiceData"];
+          'application/json': components['schemas']['InvoiceData'];
         };
       };
       /** A list of errors that occurred when updating the invoice */
       400: {
         content: {
-          "application/json": components["schemas"]["ValidationProblemDetails"];
+          'application/json': components['schemas']['ValidationProblemDetails'];
         };
       };
       /** If you are authenticated but forbidden to update the invoice */
@@ -1848,7 +1848,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["MarkInvoiceStatusRequest"];
+        'application/json': components['schemas']['MarkInvoiceStatusRequest'];
       };
     };
   };
@@ -1866,13 +1866,13 @@ export interface operations {
       /** The unarchived invoice */
       200: {
         content: {
-          "application/json": components["schemas"]["InvoiceData"];
+          'application/json': components['schemas']['InvoiceData'];
         };
       };
       /** A list of errors that occurred when updating the invoice */
       400: {
         content: {
-          "application/json": components["schemas"]["ValidationProblemDetails"];
+          'application/json': components['schemas']['ValidationProblemDetails'];
         };
       };
       /** If you are authenticated but forbidden to update the invoice */
@@ -1896,7 +1896,7 @@ export interface operations {
       /** A list of errors that occurred when updating the invoice */
       400: {
         content: {
-          "application/json": components["schemas"]["ValidationProblemDetails"];
+          'application/json': components['schemas']['ValidationProblemDetails'];
         };
       };
       /** If you are authenticated but forbidden to activate the invoice payment method */
@@ -1915,7 +1915,7 @@ export interface operations {
       /** Lightning node information such as reachable nodeinfos */
       200: {
         content: {
-          "application/json": components["schemas"]["LightningNodeInformationData"];
+          'application/json': components['schemas']['LightningNodeInformationData'];
         };
       };
       /** The lightning node configuration was not found */
@@ -1938,7 +1938,7 @@ export interface operations {
       /** Wellknown error codes are: `could-not-connect` */
       400: {
         content: {
-          "application/json": components["schemas"]["ProblemDetails"];
+          'application/json': components['schemas']['ProblemDetails'];
         };
       };
       /** The lightning node configuration was not found */
@@ -1946,7 +1946,7 @@ export interface operations {
       /** Unable to validate the request */
       422: {
         content: {
-          "application/json": components["schemas"]["ValidationProblemDetails"];
+          'application/json': components['schemas']['ValidationProblemDetails'];
         };
       };
       /** Unable to access the lightning node */
@@ -1954,7 +1954,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["ConnectToNodeRequest"];
+        'application/json': components['schemas']['ConnectToNodeRequest'];
       };
     };
   };
@@ -1970,7 +1970,7 @@ export interface operations {
       /** list of channels */
       200: {
         content: {
-          "application/json": components["schemas"]["LightningChannelData"][];
+          'application/json': components['schemas']['LightningChannelData'][];
         };
       };
       /** The lightning node configuration was not found */
@@ -1991,7 +1991,7 @@ export interface operations {
       /** Wellknown error codes are: `channel-already-exists`, `cannot-afford-funding`, `need-more-confirmations`, `peer-not-connected` */
       400: {
         content: {
-          "application/json": components["schemas"]["ProblemDetails"];
+          'application/json': components['schemas']['ProblemDetails'];
         };
       };
       /** The lightning node configuration was not found */
@@ -1999,13 +1999,13 @@ export interface operations {
       /** Unable to validate the request */
       422: {
         content: {
-          "application/json": components["schemas"]["ValidationProblemDetails"];
+          'application/json': components['schemas']['ValidationProblemDetails'];
         };
       };
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["OpenLightningChannelRequest"];
+        'application/json': components['schemas']['OpenLightningChannelRequest'];
       };
     };
   };
@@ -2021,7 +2021,7 @@ export interface operations {
       /** deposit address */
       200: {
         content: {
-          "application/json": string;
+          'application/json': string;
         };
       };
       /** The lightning node configuration was not found */
@@ -2044,7 +2044,7 @@ export interface operations {
       /** Lightning invoice data */
       200: {
         content: {
-          "application/json": components["schemas"]["LightningInvoiceData"];
+          'application/json': components['schemas']['LightningInvoiceData'];
         };
       };
       /** The lightning node configuration or the specified invoice was not found */
@@ -2067,7 +2067,7 @@ export interface operations {
       /** Wellknown error codes are: `could-not-find-route`, `generic-error` */
       400: {
         content: {
-          "application/json": components["schemas"]["ProblemDetails"];
+          'application/json': components['schemas']['ProblemDetails'];
         };
       };
       /** The lightning node configuration was not found */
@@ -2075,7 +2075,7 @@ export interface operations {
       /** Unable to validate the request */
       422: {
         content: {
-          "application/json": components["schemas"]["ValidationProblemDetails"];
+          'application/json': components['schemas']['ValidationProblemDetails'];
         };
       };
       /** Unable to access the lightning node */
@@ -2083,7 +2083,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["PayLightningInvoiceRequest"];
+        'application/json': components['schemas']['PayLightningInvoiceRequest'];
       };
     };
   };
@@ -2099,13 +2099,13 @@ export interface operations {
       /** Successfully created */
       200: {
         content: {
-          "application/json": components["schemas"]["LightningInvoiceData"];
+          'application/json': components['schemas']['LightningInvoiceData'];
         };
       };
       /** Wellknown error codes are: `invoice-error` */
       400: {
         content: {
-          "application/json": components["schemas"]["ProblemDetails"];
+          'application/json': components['schemas']['ProblemDetails'];
         };
       };
       /** The lightning node configuration was not found */
@@ -2115,7 +2115,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["CreateLightningInvoiceRequest"];
+        'application/json': components['schemas']['CreateLightningInvoiceRequest'];
       };
     };
   };
@@ -2133,7 +2133,7 @@ export interface operations {
       /** Lightning node information such as reachable nodeinfos */
       200: {
         content: {
-          "application/json": components["schemas"]["LightningNodeInformationData"];
+          'application/json': components['schemas']['LightningNodeInformationData'];
         };
       };
       /** The lightning node configuration was not found */
@@ -2158,7 +2158,7 @@ export interface operations {
       /** Wellknown error codes are: `could-not-connect` */
       400: {
         content: {
-          "application/json": components["schemas"]["ProblemDetails"];
+          'application/json': components['schemas']['ProblemDetails'];
         };
       };
       /** The lightning node configuration was not found */
@@ -2166,7 +2166,7 @@ export interface operations {
       /** Unable to validate the request */
       422: {
         content: {
-          "application/json": components["schemas"]["ValidationProblemDetails"];
+          'application/json': components['schemas']['ValidationProblemDetails'];
         };
       };
       /** Unable to access the lightning node */
@@ -2174,7 +2174,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["ConnectToNodeRequest"];
+        'application/json': components['schemas']['ConnectToNodeRequest'];
       };
     };
   };
@@ -2192,7 +2192,7 @@ export interface operations {
       /** list of channels */
       200: {
         content: {
-          "application/json": components["schemas"]["LightningChannelData"][];
+          'application/json': components['schemas']['LightningChannelData'][];
         };
       };
       /** The lightning node configuration was not found */
@@ -2215,7 +2215,7 @@ export interface operations {
       /** Wellknown error codes are: `channel-already-exists`, `cannot-afford-funding`, `need-more-confirmations`, `peer-not-connected` */
       400: {
         content: {
-          "application/json": components["schemas"]["ProblemDetails"];
+          'application/json': components['schemas']['ProblemDetails'];
         };
       };
       /** The lightning node configuration was not found */
@@ -2223,7 +2223,7 @@ export interface operations {
       /** Unable to validate the request */
       422: {
         content: {
-          "application/json": components["schemas"]["ValidationProblemDetails"];
+          'application/json': components['schemas']['ValidationProblemDetails'];
         };
       };
       /** Unable to access the lightning node */
@@ -2231,7 +2231,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["OpenLightningChannelRequest"];
+        'application/json': components['schemas']['OpenLightningChannelRequest'];
       };
     };
   };
@@ -2249,7 +2249,7 @@ export interface operations {
       /** deposit address */
       200: {
         content: {
-          "application/json": string;
+          'application/json': string;
         };
       };
       /** The lightning node configuration was not found */
@@ -2274,7 +2274,7 @@ export interface operations {
       /** Lightning invoice data */
       200: {
         content: {
-          "application/json": components["schemas"]["LightningInvoiceData"];
+          'application/json': components['schemas']['LightningInvoiceData'];
         };
       };
       /** The lightning node configuration or the specified invoice was not found */
@@ -2299,7 +2299,7 @@ export interface operations {
       /** Wellknown error codes are: `could-not-find-route`, `generic-error` */
       400: {
         content: {
-          "application/json": components["schemas"]["ProblemDetails"];
+          'application/json': components['schemas']['ProblemDetails'];
         };
       };
       /** The lightning node configuration was not found */
@@ -2307,7 +2307,7 @@ export interface operations {
       /** Unable to validate the request */
       422: {
         content: {
-          "application/json": components["schemas"]["ValidationProblemDetails"];
+          'application/json': components['schemas']['ValidationProblemDetails'];
         };
       };
       /** Unable to access the lightning node */
@@ -2315,7 +2315,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["PayLightningInvoiceRequest"];
+        'application/json': components['schemas']['PayLightningInvoiceRequest'];
       };
     };
   };
@@ -2333,13 +2333,13 @@ export interface operations {
       /** Successfully created */
       200: {
         content: {
-          "application/json": components["schemas"]["LightningInvoiceData"];
+          'application/json': components['schemas']['LightningInvoiceData'];
         };
       };
       /** Wellknown error codes are: `invoice-error` */
       400: {
         content: {
-          "application/json": components["schemas"]["ProblemDetails"];
+          'application/json': components['schemas']['ProblemDetails'];
         };
       };
       /** The lightning node configuration was not found */
@@ -2349,7 +2349,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["CreateLightningInvoiceRequest"];
+        'application/json': components['schemas']['CreateLightningInvoiceRequest'];
       };
     };
   };
@@ -2359,7 +2359,7 @@ export interface operations {
       /** The metadata of available permissions */
       200: {
         content: {
-          "application/json": {
+          'application/json': {
             /** The permission id */
             name?: string;
             /** Permissions included in this array are also granted by this permission */
@@ -2375,7 +2375,7 @@ export interface operations {
       /** The supported language codes */
       200: {
         content: {
-          "application/json": {
+          'application/json': {
             /** The language code */
             code?: string;
             /** The language name */
@@ -2397,7 +2397,7 @@ export interface operations {
       /** list of notifications */
       200: {
         content: {
-          "application/json": components["schemas"]["NotificationData"];
+          'application/json': components['schemas']['NotificationData'];
         };
       };
     };
@@ -2414,7 +2414,7 @@ export interface operations {
       /** specified notification */
       200: {
         content: {
-          "application/json": components["schemas"]["NotificationData"];
+          'application/json': components['schemas']['NotificationData'];
         };
       };
       /** If you are authenticated but forbidden to view the specified notification */
@@ -2435,7 +2435,7 @@ export interface operations {
       /** updated notification */
       200: {
         content: {
-          "application/json": components["schemas"]["NotificationData"];
+          'application/json': components['schemas']['NotificationData'];
         };
       };
       /** If you are authenticated but forbidden to update the specified notification */
@@ -2445,7 +2445,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["UpdateNotification"];
+        'application/json': components['schemas']['UpdateNotification'];
       };
     };
   };
@@ -2478,7 +2478,7 @@ export interface operations {
       /** list of payment requests */
       200: {
         content: {
-          "application/json": components["schemas"]["PaymentRequestDataList"];
+          'application/json': components['schemas']['PaymentRequestDataList'];
         };
       };
     };
@@ -2495,13 +2495,13 @@ export interface operations {
       /** Information about the new payment request */
       200: {
         content: {
-          "application/json": components["schemas"]["PaymentRequestData"];
+          'application/json': components['schemas']['PaymentRequestData'];
         };
       };
       /** A list of errors that occurred when creating the payment request */
       400: {
         content: {
-          "application/json": components["schemas"]["ValidationProblemDetails"];
+          'application/json': components['schemas']['ValidationProblemDetails'];
         };
       };
       /** If you are authenticated but forbidden to add new payment requests */
@@ -2509,7 +2509,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["PaymentRequestBaseData"];
+        'application/json': components['schemas']['PaymentRequestBaseData'];
       };
     };
   };
@@ -2527,7 +2527,7 @@ export interface operations {
       /** specified payment request */
       200: {
         content: {
-          "application/json": components["schemas"]["PaymentRequestData"];
+          'application/json': components['schemas']['PaymentRequestData'];
         };
       };
       /** If you are authenticated but forbidden to view the specified payment request */
@@ -2550,13 +2550,13 @@ export interface operations {
       /** The updated payment request */
       200: {
         content: {
-          "application/json": components["schemas"]["PaymentRequestData"];
+          'application/json': components['schemas']['PaymentRequestData'];
         };
       };
       /** A list of errors that occurred when updating the payment request */
       400: {
         content: {
-          "application/json": components["schemas"]["ValidationProblemDetails"];
+          'application/json': components['schemas']['ValidationProblemDetails'];
         };
       };
       /** If you are authenticated but forbidden to update the payment request */
@@ -2564,7 +2564,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["PaymentRequestBaseData"];
+        'application/json': components['schemas']['PaymentRequestBaseData'];
       };
     };
   };
@@ -2584,7 +2584,7 @@ export interface operations {
       /** A list of errors that occurred when archiving the payment request */
       400: {
         content: {
-          "application/json": components["schemas"]["ValidationProblemDetails"];
+          'application/json': components['schemas']['ValidationProblemDetails'];
         };
       };
       /** If you are authenticated but forbidden to archive the specified payment request */
@@ -2609,7 +2609,7 @@ export interface operations {
       /** List of pull payments */
       200: {
         content: {
-          "application/json": components["schemas"]["PullPaymentDataList"];
+          'application/json': components['schemas']['PullPaymentDataList'];
         };
       };
     };
@@ -2626,19 +2626,19 @@ export interface operations {
       /** The create pull payment */
       200: {
         content: {
-          "application/json": components["schemas"]["PullPaymentData"];
+          'application/json': components['schemas']['PullPaymentData'];
         };
       };
       /** Unable to validate the request */
       422: {
         content: {
-          "application/json": components["schemas"]["ValidationProblemDetails"];
+          'application/json': components['schemas']['ValidationProblemDetails'];
         };
       };
     };
     requestBody: {
       content: {
-        "application/json": {
+        'application/json': {
           /** The name of the pull payment */
           name?: string | null;
           /** The amount in `currency` of this pull payment as a decimal string */
@@ -2669,7 +2669,7 @@ export interface operations {
       /** Information about the pull payment */
       200: {
         content: {
-          "application/json": components["schemas"]["PullPaymentData"];
+          'application/json': components['schemas']['PullPaymentData'];
         };
       };
       /** Pull payment not found */
@@ -2709,7 +2709,7 @@ export interface operations {
       /** The payouts of the pull payment */
       200: {
         content: {
-          "application/json": components["schemas"]["PayoutDataList"];
+          'application/json': components['schemas']['PayoutDataList'];
         };
       };
       /** Pull payment not found */
@@ -2728,13 +2728,13 @@ export interface operations {
       /** A new payout has been created */
       200: {
         content: {
-          "application/json": components["schemas"]["PayoutData"];
+          'application/json': components['schemas']['PayoutData'];
         };
       };
       /** Wellknown error codes are: `duplicate-destination`, `expired`, `not-started`, `archived`, `overdraft`, `amount-too-low`, `payment-method-not-supported` */
       400: {
         content: {
-          "application/json": components["schemas"]["ProblemDetails"];
+          'application/json': components['schemas']['ProblemDetails'];
         };
       };
       /** Pull payment not found */
@@ -2742,13 +2742,13 @@ export interface operations {
       /** Unable to validate the request */
       422: {
         content: {
-          "application/json": components["schemas"]["ValidationProblemDetails"];
+          'application/json': components['schemas']['ValidationProblemDetails'];
         };
       };
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["CreatePayoutRequest"];
+        'application/json': components['schemas']['CreatePayoutRequest'];
       };
     };
   };
@@ -2766,13 +2766,13 @@ export interface operations {
       /** The payout has been approved, transitioning to `AwaitingPayment` state. */
       200: {
         content: {
-          "application/json": components["schemas"]["PayoutData"];
+          'application/json': components['schemas']['PayoutData'];
         };
       };
       /** Wellknown error codes are: `rate-unavailable`, `invalid-state`, `amount-too-low`, `old-revision` */
       400: {
         content: {
-          "application/json": components["schemas"]["ProblemDetails"];
+          'application/json': components['schemas']['ProblemDetails'];
         };
       };
       /** The payout is not found */
@@ -2780,13 +2780,13 @@ export interface operations {
       /** Unable to validate the request */
       422: {
         content: {
-          "application/json": components["schemas"]["ValidationProblemDetails"];
+          'application/json': components['schemas']['ValidationProblemDetails'];
         };
       };
     };
     requestBody: {
       content: {
-        "application/json": {
+        'application/json': {
           /** The revision number of the payout being modified */
           revision?: number;
           /** The rate rule to calculate the rate of the payout. This can also be a fixed decimal. (if null or unspecified, will use the same rate setting as the store's settings) */
@@ -2828,7 +2828,7 @@ export interface operations {
       /** Wellknown error codes are: `invalid-state` */
       400: {
         content: {
-          "application/json": components["schemas"]["ProblemDetails"];
+          'application/json': components['schemas']['ProblemDetails'];
         };
       };
       /** The payout is not found */
@@ -2836,7 +2836,7 @@ export interface operations {
       /** Unable to validate the request */
       422: {
         content: {
-          "application/json": components["schemas"]["ValidationProblemDetails"];
+          'application/json': components['schemas']['ValidationProblemDetails'];
         };
       };
     };
@@ -2847,7 +2847,7 @@ export interface operations {
       /** Server information */
       200: {
         content: {
-          "application/json": components["schemas"]["ApplicationServerInfoData"];
+          'application/json': components['schemas']['ApplicationServerInfoData'];
         };
       };
     };
@@ -2868,8 +2868,8 @@ export interface operations {
       /** list of payment methods */
       200: {
         content: {
-          "application/json": {
-            [key: string]: components["schemas"]["GenericPaymentMethodData"];
+          'application/json': {
+            [key: string]: components['schemas']['GenericPaymentMethodData'];
           };
         };
       };
@@ -2891,7 +2891,7 @@ export interface operations {
       /** list of payment methods */
       200: {
         content: {
-          "application/json": components["schemas"]["LightningNetworkPaymentMethodDataList"];
+          'application/json': components['schemas']['LightningNetworkPaymentMethodDataList'];
         };
       };
     };
@@ -2910,7 +2910,7 @@ export interface operations {
       /** specified payment method */
       200: {
         content: {
-          "application/json": components["schemas"]["LightningNetworkPaymentMethodData"];
+          'application/json': components['schemas']['LightningNetworkPaymentMethodData'];
         };
       };
       /** If you are authenticated but forbidden to view the specified store */
@@ -2933,13 +2933,13 @@ export interface operations {
       /** updated specified payment method */
       200: {
         content: {
-          "application/json": components["schemas"]["LightningNetworkPaymentMethodData"];
+          'application/json': components['schemas']['LightningNetworkPaymentMethodData'];
         };
       };
       /** A list of errors that occurred when updating the store payment method */
       400: {
         content: {
-          "application/json": components["schemas"]["ValidationProblemDetails"];
+          'application/json': components['schemas']['ValidationProblemDetails'];
         };
       };
       /** If you are authenticated but forbidden to update the specified store */
@@ -2949,7 +2949,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["UpdateLightningNetworkPaymentMethodRequest"];
+        'application/json': components['schemas']['UpdateLightningNetworkPaymentMethodRequest'];
       };
     };
   };
@@ -2969,7 +2969,7 @@ export interface operations {
       /** list of payment methods */
       200: {
         content: {
-          "application/json": components["schemas"]["LNURLPayPaymentMethodDataList"];
+          'application/json': components['schemas']['LNURLPayPaymentMethodDataList'];
         };
       };
     };
@@ -2988,7 +2988,7 @@ export interface operations {
       /** specified payment method */
       200: {
         content: {
-          "application/json": components["schemas"]["LNURLPayPaymentMethodData"];
+          'application/json': components['schemas']['LNURLPayPaymentMethodData'];
         };
       };
       /** If you are authenticated but forbidden to view the specified store */
@@ -3011,13 +3011,13 @@ export interface operations {
       /** updated specified payment method */
       200: {
         content: {
-          "application/json": components["schemas"]["LNURLPayPaymentMethodData"];
+          'application/json': components['schemas']['LNURLPayPaymentMethodData'];
         };
       };
       /** A list of errors that occurred when updating the store payment method */
       400: {
         content: {
-          "application/json": components["schemas"]["ValidationProblemDetails"];
+          'application/json': components['schemas']['ValidationProblemDetails'];
         };
       };
       /** If you are authenticated but forbidden to update the specified store */
@@ -3027,7 +3027,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["LNURLPayPaymentMethodData"];
+        'application/json': components['schemas']['LNURLPayPaymentMethodData'];
       };
     };
   };
@@ -3047,7 +3047,7 @@ export interface operations {
       /** list of payment methods */
       200: {
         content: {
-          "application/json": components["schemas"]["OnChainPaymentMethodDataList"];
+          'application/json': components['schemas']['OnChainPaymentMethodDataList'];
         };
       };
     };
@@ -3066,7 +3066,7 @@ export interface operations {
       /** specified payment method */
       200: {
         content: {
-          "application/json": components["schemas"]["OnChainPaymentMethodData"];
+          'application/json': components['schemas']['OnChainPaymentMethodData'];
         };
       };
       /** If you are authenticated but forbidden to view the specified store */
@@ -3089,13 +3089,13 @@ export interface operations {
       /** updated specified payment method */
       200: {
         content: {
-          "application/json": components["schemas"]["OnChainPaymentMethodData"];
+          'application/json': components['schemas']['OnChainPaymentMethodData'];
         };
       };
       /** A list of errors that occurred when updating the store payment method */
       400: {
         content: {
-          "application/json": components["schemas"]["ValidationProblemDetails"];
+          'application/json': components['schemas']['ValidationProblemDetails'];
         };
       };
       /** If you are authenticated but forbidden to update the specified store */
@@ -3105,7 +3105,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["UpdateOnChainPaymentMethodRequest"];
+        'application/json': components['schemas']['UpdateOnChainPaymentMethodRequest'];
       };
     };
   };
@@ -3129,7 +3129,7 @@ export interface operations {
       /** specified payment method addresses */
       200: {
         content: {
-          "application/json": components["schemas"]["OnChainPaymentMethodPreviewResultData"];
+          'application/json': components['schemas']['OnChainPaymentMethodPreviewResultData'];
         };
       };
       /** If you are authenticated but forbidden to view the specified store */
@@ -3139,7 +3139,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["OnChainPaymentMethodDataPreview"];
+        'application/json': components['schemas']['OnChainPaymentMethodDataPreview'];
       };
     };
   };
@@ -3157,7 +3157,7 @@ export interface operations {
       /** specified wallet */
       200: {
         content: {
-          "application/json": components["schemas"]["OnChainWalletOverviewData"];
+          'application/json': components['schemas']['OnChainWalletOverviewData'];
         };
       };
       /** If you are authenticated but forbidden to view the specified store */
@@ -3184,7 +3184,7 @@ export interface operations {
       /** fee rate */
       200: {
         content: {
-          "application/json": components["schemas"]["OnChainWalletFeeRateData"];
+          'application/json': components['schemas']['OnChainWalletFeeRateData'];
         };
       };
       /** If you are authenticated but forbidden to view the specified store */
@@ -3211,7 +3211,7 @@ export interface operations {
       /** reserved address */
       200: {
         content: {
-          "application/json": components["schemas"]["OnChainWalletAddressData"];
+          'application/json': components['schemas']['OnChainWalletAddressData'];
         };
       };
       /** If you are authenticated but forbidden to view the specified store */
@@ -3250,7 +3250,7 @@ export interface operations {
       };
       query: {
         /** Statuses to filter the transactions with */
-        statusFilter?: components["schemas"]["TransactionStatus"][];
+        statusFilter?: components['schemas']['TransactionStatus'][];
         /** Number of transactions to skip from the start */
         skip?: number;
         /** Maximum number of transactions to return */
@@ -3261,7 +3261,7 @@ export interface operations {
       /** transactions list */
       200: {
         content: {
-          "application/json": components["schemas"]["OnChainWalletTransactionData"][];
+          'application/json': components['schemas']['OnChainWalletTransactionData'][];
         };
       };
       /** If you are authenticated but forbidden to view the specified store */
@@ -3284,9 +3284,9 @@ export interface operations {
       /** the tx */
       200: {
         content: {
-          "application/json":
+          'application/json':
             | string
-            | components["schemas"]["OnChainWalletTransactionData"];
+            | components['schemas']['OnChainWalletTransactionData'];
         };
       };
       /** If you are authenticated but forbidden to view the specified store */
@@ -3296,7 +3296,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["CreateOnChainTransactionRequest"];
+        'application/json': components['schemas']['CreateOnChainTransactionRequest'];
       };
     };
   };
@@ -3316,7 +3316,7 @@ export interface operations {
       /** transaction */
       200: {
         content: {
-          "application/json": components["schemas"]["OnChainWalletTransactionData"];
+          'application/json': components['schemas']['OnChainWalletTransactionData'];
         };
       };
       /** If you are authenticated but forbidden to view the specified store */
@@ -3339,7 +3339,7 @@ export interface operations {
       /** utxo list */
       200: {
         content: {
-          "application/json": components["schemas"]["OnChainWalletUTXOData"][];
+          'application/json': components['schemas']['OnChainWalletUTXOData'][];
         };
       };
       /** If you are authenticated but forbidden to view the specified store */
@@ -3354,7 +3354,7 @@ export interface operations {
       /** list of stores */
       200: {
         content: {
-          "application/json": components["schemas"]["StoreDataList"];
+          'application/json': components['schemas']['StoreDataList'];
         };
       };
     };
@@ -3371,7 +3371,7 @@ export interface operations {
       /** specified store */
       200: {
         content: {
-          "application/json": components["schemas"]["StoreData"];
+          'application/json': components['schemas']['StoreData'];
         };
       };
       /** If you are authenticated but forbidden to view the specified store */
@@ -3392,13 +3392,13 @@ export interface operations {
       /** updated specified store */
       200: {
         content: {
-          "application/json": components["schemas"]["StoreData"];
+          'application/json': components['schemas']['StoreData'];
         };
       };
       /** A list of errors that occurred when updating the store */
       400: {
         content: {
-          "application/json": components["schemas"]["ValidationProblemDetails"];
+          'application/json': components['schemas']['ValidationProblemDetails'];
         };
       };
       /** If you are authenticated but forbidden to update the specified store */
@@ -3408,7 +3408,7 @@ export interface operations {
     };
     requestBody: {
       content: {
-        "application/json": components["schemas"]["StoreData"];
+        'application/json': components['schemas']['StoreData'];
       };
     };
   };
@@ -3418,7 +3418,7 @@ export interface operations {
       /** Information about the current user */
       200: {
         content: {
-          "application/json": components["schemas"]["ApplicationUserData"];
+          'application/json': components['schemas']['ApplicationUserData'];
         };
       };
     };
@@ -3442,7 +3442,7 @@ export interface operations {
       /** List of webhooks */
       200: {
         content: {
-          "application/json": components["schemas"]["WebhookDataList"];
+          'application/json': components['schemas']['WebhookDataList'];
         };
       };
     };
@@ -3461,7 +3461,7 @@ export interface operations {
       /** A webhook */
       200: {
         content: {
-          "application/json": components["schemas"]["WebhookData"];
+          'application/json': components['schemas']['WebhookData'];
         };
       };
       /** The webhook has not been found */
