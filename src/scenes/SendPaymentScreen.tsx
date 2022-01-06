@@ -1,11 +1,12 @@
 import React from 'react';
-import {Text, SafeAreaView} from 'react-native';
+import {View} from 'react-native';
+import QRScanner from '@app/components/scanner/QRScanner';
 
 function SendPaymentScreen() {
   return (
-    <SafeAreaView>
-      <Text>Send Payment Screen</Text>
-    </SafeAreaView>
+    <View>
+      <QRScanner />
+    </View>
   );
 }
 
