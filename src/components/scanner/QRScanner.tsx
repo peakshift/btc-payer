@@ -1,13 +1,13 @@
 import React from 'react';
-import {BarCodeReadEvent} from 'react-native-camera';
-import QRCodeScanner from 'react-native-qrcode-scanner';
+import {Text, View} from 'react-native';
 
+// TODO: use react-native-vision-camera
 function QRScanner() {
-  const onSuccess = (e: BarCodeReadEvent) => {
-    console.log({data: e.data});
-  };
-
-  return <QRCodeScanner onRead={onSuccess} />;
+  return (
+    <View>
+      <Text>QR Code Scanner</Text>
+    </View>
+  );
 }
 
 export default QRScanner;

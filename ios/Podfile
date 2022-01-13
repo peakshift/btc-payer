@@ -5,9 +5,6 @@ platform :ios, '11.0'
 
 target 'BTCPayer' do
   config = use_native_modules!
-  permissions_path = '../node_modules/react-native-permissions/ios'
-
-  pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
 
   use_react_native!(
     :path => config[:reactNativePath],
