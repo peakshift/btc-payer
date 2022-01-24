@@ -34,4 +34,4 @@ function AuthNavigator() {
   );
 }
 
-export default AuthNavigator;
+export default React.memo(AuthNavigator);
