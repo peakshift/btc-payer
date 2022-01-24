@@ -3,6 +3,7 @@ import {Button, Text, SafeAreaView} from 'react-native';
 import {useNavigation} from '@react-navigation/core';
 import {AppNavigatorParams} from '@app/navigation/AppNavigator';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {useAuth} from '@app/providers/AuthProvider';
 
 type HomeScreenNavigationProp = StackNavigationProp<
   AppNavigatorParams,
@@ -11,10 +12,11 @@ type HomeScreenNavigationProp = StackNavigationProp<
 
 function HomeScreen() {
   const navigation = useNavigation<HomeScreenNavigationProp>();
+  const {authState, signOut} = useAuth();
 
   return (
     <SafeAreaView>
-      <Text>BTC Payer</Text>
+      <Text>Welcome {authState?.user.email}</Text>
       <Button
         onPress={() => {
           navigation.push('ReceivePaymentScreen');
@@ -27,6 +29,7 @@ function HomeScreen() {
         }}
         title="Send Payment"
       />
+      <Button onPress={signOut} title="Sign Out" />
     </SafeAreaView>
   );
 }

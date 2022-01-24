@@ -1,15 +1,15 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import AppNavigator from '@app/navigation/AppNavigator';
-import QueryProvider from '@app/providers/QueryProvider';
+import AuthProvider from '@app/providers/AuthProvider';
+import Router from '@app/navigation/Router';
+import ServerInstanceProvider from './providers/ServerInstanceProvider';
 
 function App() {
   return (
-    <QueryProvider>
-      <NavigationContainer>
-        <AppNavigator />
-      </NavigationContainer>
-    </QueryProvider>
+    <ServerInstanceProvider>
+      <AuthProvider>
+        <Router />
+      </AuthProvider>
+    </ServerInstanceProvider>
   );
 }
 
