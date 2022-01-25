@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "jonathanpalma",
+      "name": "Jonathan Palma",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12414771?v=4",
+      "profile": "http://jonathanpalma.me",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "btc-payer",
+  "projectOwner": "peakshift",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
