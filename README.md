@@ -1,6 +1,6 @@
 # btc-payer
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## Requirements
@@ -21,6 +21,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="http://jonathanpalma.me"><img src="https://avatars.githubusercontent.com/u/12414771?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jonathan Palma</b></sub></a><br /><a href="https://github.com/peakshift/btc-payer/commits?author=jonathanpalma" title="Code">💻</a> <a href="https://github.com/peakshift/btc-payer/commits?author=jonathanpalma" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://twitter.com/johnsBeharry"><img src="https://avatars.githubusercontent.com/u/183140?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Johns Beharry</b></sub></a><br /><a href="#projectManagement-johnsBeharry" title="Project Management">📆</a> <a href="#ideas-johnsBeharry" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 
