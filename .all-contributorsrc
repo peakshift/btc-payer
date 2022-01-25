@@ -24,6 +24,15 @@
         "projectManagement",
         "ideas"
       ]
+    },
+    {
+      "login": "alepaz",
+      "name": "Alejandro Paz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5847822?v=4",
+      "profile": "https://github.com/alepaz",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
