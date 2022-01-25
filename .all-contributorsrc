@@ -14,6 +14,16 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "johnsBeharry",
+      "name": "Johns Beharry",
+      "avatar_url": "https://avatars.githubusercontent.com/u/183140?v=4",
+      "profile": "https://twitter.com/johnsBeharry",
+      "contributions": [
+        "projectManagement",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
